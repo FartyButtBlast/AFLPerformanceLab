@@ -298,6 +298,14 @@ button {
   min-height: 300px;
 }
 
+.chart-caption {
+  margin: 8px 0 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .chart.compact {
   min-height: 360px;
 }

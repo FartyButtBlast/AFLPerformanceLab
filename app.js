@@ -218,6 +218,10 @@ function leagueScoringEfficiency() {
 
 function pavContext(team) {
   const rows = data.teamGames.filter((row) => row.team === team);
+  return pavContextFromRows(team, rows);
+}
+
+function pavContextFromRows(team, rows) {
   const leagueRows = data.teamGames.filter((row) => row.IF);
   const leaguePointsPerGame = avg(leagueRows.map((row) => ({ value: teamPoints(row) })), "value") ?? 0;
   const leagueInside50sPerGame = avg(leagueRows, "IF") ?? 0;
@@ -231,7 +235,19 @@ function pavContext(team) {
   const midfieldPool = safeRatio(inside50sFor, inside50sAgainst || leagueInside50sPerGame * games, 1) * 100;
   const defenceNumber = safeRatio(safeRatio(pointsAgainst, inside50sAgainst), leagueEfficiency, 1);
   const defencePool = Math.max(0, 100 * ((2 * defenceNumber - defenceNumber ** 2) / (2 * defenceNumber || 1)) * 2);
-  const players = data.players.filter((row) => row.team === team);
+  const rounds = new Set(rows.map((row) => row.round));
+  const sourceRows = rounds.size
+    ? data.playerGames.filter((row) => row.team === team && rounds.has(row.round))
+    : data.players.filter((row) => row.team === team);
+  const players = new Map();
+  sourceRows.forEach((row) => {
+    const record = players.get(row.player) ?? { team, player: row.player, GM: 0, playerKey: `${row.player.toLowerCase()}|${team.toLowerCase()}` };
+    record.GM += 1;
+    ["KI", "MK", "HB", "DI", "GL", "BH", "HO", "TK", "RB", "IF", "CL", "CG", "FF", "FA", "CP", "UP", "CM", "MI", "OP", "BO", "GA"].forEach((stat) => {
+      record[stat] = (record[stat] ?? 0) + (row[stat] ?? 0);
+    });
+    players.set(row.player, record);
+  });
   const roleTotals = {
     Offense: 0,
     Midfield: 0,
@@ -245,14 +261,24 @@ function pavContext(team) {
   return {
     pools: { Offense: offencePool, Midfield: midfieldPool, Defence: defencePool },
     roleTotals,
+    players,
   };
 }
 
 function playerPav(team, player, context) {
-  const record = seasonPlayerRecord(team, player);
+  const record = context.players?.get(player) ?? seasonPlayerRecord(team, player);
   const role = inferRole(record);
   const share = safeRatio(roleContribution(record, role), context.roleTotals[role]);
   return { role, value: share * context.pools[role] };
+}
+
+function playerPavByRound(team, player) {
+  const rounds = playerRounds(team, player);
+  return rounds.map((playerGame) => {
+    const teamGame = data.teamGames.find((row) => row.team === team && row.round === playerGame.round);
+    const context = pavContextFromRows(team, teamGame ? [teamGame] : []);
+    return { round: playerGame.round, value: playerPav(team, player, context).value };
+  });
 }
 
 function playerRounds(team, player) {
@@ -544,7 +570,10 @@ function render() {
   svgLineChart(document.querySelector("#teamTrendChart"), teamTrend(selectedTeam, selectedStat));
   svgBarChart(document.querySelector("#leagueChart"), leagueLatest(selectedStat).slice(0, 18), { height: 500 });
   const playerPoints = playerRounds(selectedTeam, selectedPlayer).map((row) => ({ round: row.round, value: statValue(row, selectedStat) }));
+  document.querySelector("#playerChartCaption").textContent = `${selectedPlayer || "Player"} ${data.statLabels[selectedStat]} by round`;
   svgLineChart(document.querySelector("#playerChart"), playerPoints.length ? playerPoints : [{ round: 1, value: 0 }]);
+  const playerPavPoints = playerPavByRound(selectedTeam, selectedPlayer);
+  svgLineChart(document.querySelector("#playerPavChart"), playerPavPoints.length ? playerPavPoints : [{ round: 1, value: 0 }]);
   document.querySelector("#rollupCaption").textContent = `${selectedTeam} ${data.statLabels[selectedStat]} by round, ${season}.`;
   document.querySelector("#seasonBadge").textContent = `${season} season only, fetched ${new Date(data.fetchedAt).toLocaleDateString()}`;
   renderQuestionAnswer();
