@@ -16,6 +16,10 @@ let selectedStat = defaultStat;
 let selectedPlayer = "";
 let lastQuestion = "";
 
+const roleOverrides = {
+  "edwards, tom|essendon": "Offence",
+};
+
 const statAliases = {
   goals: "GL",
   goal: "GL",
@@ -115,6 +119,12 @@ function seasonPlayerRecord(team, player) {
   return data.players.find((row) => row.team === team && row.player === player);
 }
 
+function playerPositionRole(record) {
+  const key = record?.playerKey;
+  if (!key) return null;
+  return roleOverrides[key] ?? data.playerPositions?.find((row) => row.playerKey === key)?.role ?? null;
+}
+
 function roleContribution(record, role) {
   if (!record) return 0;
   if (role === "Offence") {
@@ -127,6 +137,9 @@ function roleContribution(record, role) {
 }
 
 function inferRole(record) {
+  const listedRole = playerPositionRole(record);
+  if (listedRole) return listedRole;
+
   const roles = ["Offence", "Midfield", "Defence"];
   return roles
     .map((role) => ({ role, value: roleContribution(record, role) }))
@@ -156,10 +169,14 @@ function pavContext(team) {
   const defencePool = Math.max(0, 100 * ((2 * defenceNumber - defenceNumber ** 2) / (2 * defenceNumber || 1)) * 2);
   const players = data.players.filter((row) => row.team === team);
   const roleTotals = {
-    Offence: players.reduce((sum, record) => sum + roleContribution(record, "Offence"), 0),
-    Midfield: players.reduce((sum, record) => sum + roleContribution(record, "Midfield"), 0),
-    Defence: players.reduce((sum, record) => sum + roleContribution(record, "Defence"), 0),
+    Offence: 0,
+    Midfield: 0,
+    Defence: 0,
   };
+  players.forEach((record) => {
+    const role = inferRole(record);
+    roleTotals[role] += roleContribution(record, role);
+  });
 
   return {
     pools: { Offence: offencePool, Midfield: midfieldPool, Defence: defencePool },

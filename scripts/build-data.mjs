@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 
 const SEASON = 2026;
 const BASE_URL = "https://afltables.com/afl/stats";
+const POSITION_BASE_URL = "https://www.zerohanger.com/afl/teams";
 const OUT_FILE = new URL("../data/afl-data.js", import.meta.url);
 
 const columns = [
@@ -86,6 +87,34 @@ const tableHeadingToStat = {
   Bounces: "BO",
   "Goal Assists": "GA",
   "% Played": "PCT",
+};
+
+const teamPositionSlugs = {
+  Adelaide: "adelaide-crows",
+  "Brisbane Lions": "brisbane-lions",
+  Carlton: "carlton-blues",
+  Collingwood: "collingwood-magpies",
+  Essendon: "essendon-bombers",
+  Fremantle: "fremantle-dockers",
+  Geelong: "geelong-cats",
+  "Gold Coast": "gold-coast-suns",
+  "Greater Western Sydney": "gws-giants",
+  Hawthorn: "hawthorn-hawks",
+  Melbourne: "melbourne-demons",
+  "North Melbourne": "north-melbourne-kangaroos",
+  "Port Adelaide": "port-adelaide-power",
+  Richmond: "richmond-tigers",
+  "St Kilda": "st-kilda-saints",
+  Sydney: "sydney-swans",
+  "West Coast": "west-coast-eagles",
+  "Western Bulldogs": "western-bulldogs",
+};
+
+const positionRoles = {
+  Defender: "Defence",
+  Midfielder: "Midfield",
+  Ruck: "Midfield",
+  Forward: "Offence",
 };
 
 function decodeEntities(value) {
@@ -187,6 +216,7 @@ async function fetchYear(year) {
 const fetchedAt = new Date().toISOString();
 const allPlayers = [];
 const allTeams = [];
+let playerPositions = [];
 const playerGames = [];
 const teamGames = [];
 
@@ -202,6 +232,55 @@ function parseTeamSlugs(html) {
     }
   }
   return teams;
+}
+
+function normalisePlayerName(name) {
+  const trimmed = name.replace(/\s+/g, " ").trim();
+  const parts = trimmed.split(" ");
+  if (parts.length < 2) return trimmed.toLowerCase();
+  const surname = parts.pop();
+  return `${surname}, ${parts.join(" ")}`.toLowerCase();
+}
+
+function parsePositionRows(html, team) {
+  const text = stripTags(html)
+    .replace(/\$/g, " $")
+    .replace(/\s+/g, " ")
+    .trim();
+  const positions = [];
+  const pattern = /([A-Z][A-Za-z' .-]+?)\s+(Defender|Midfielder|Ruck|Forward)\s+\d+\s+[\d.]+\s+\$/g;
+  for (const match of text.matchAll(pattern)) {
+    const player = match[1]
+      .replace(/\bAFL\b|\bSuperCoach\b|\bPlayer\b|\bPosition\b|\bFantasy Stats\b/gi, "")
+      .trim();
+    const position = match[2];
+    if (!player || !positionRoles[position]) continue;
+    positions.push({
+      team,
+      player,
+      position,
+      role: positionRoles[position],
+      playerKey: `${normalisePlayerName(player)}|${team.toLowerCase()}`,
+    });
+  }
+  return positions.filter((row, index, rows) => rows.findIndex((item) => item.playerKey === row.playerKey) === index);
+}
+
+async function fetchPositionRows(teams) {
+  const positions = [];
+  for (const team of teams) {
+    const slug = teamPositionSlugs[team.team];
+    if (!slug) continue;
+    try {
+      console.log(`Fetching ${team.team} positions`);
+      const response = await fetch(`${POSITION_BASE_URL}/${slug}/`);
+      if (!response.ok) throw new Error(`${response.status}`);
+      positions.push(...parsePositionRows(await response.text(), team.team));
+    } catch (error) {
+      console.warn(`Could not fetch ${team.team} positions: ${error.message}`);
+    }
+  }
+  return positions;
 }
 
 function normaliseRound(value) {
@@ -291,6 +370,7 @@ allPlayers.push(...parsed.players);
 allTeams.push(...parsed.teams);
 
 const teams = parseTeamSlugs(html);
+playerPositions = await fetchPositionRows(teams);
 for (const { team, slug } of teams) {
   console.log(`Fetching ${team} game-by-game`);
   const response = await fetch(`${BASE_URL}/teams/${slug}/${SEASON}_gbg.html`);
@@ -309,6 +389,7 @@ await writeFile(
       season: SEASON,
       years: [SEASON],
       statLabels,
+      playerPositions,
       players: allPlayers,
       teams: allTeams,
       playerGames,
