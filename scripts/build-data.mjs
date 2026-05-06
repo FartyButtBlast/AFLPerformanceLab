@@ -224,6 +224,8 @@ function parseGameByGame(html, team) {
     const headerRow = headRows[1] ?? "";
     const headers = [...headerRow.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/gi)].map((cell) => stripTags(cell[1]));
     const rounds = headers.slice(1, -1).map(normaliseRound);
+    const opponentRow = table.match(/<tr><th[^>]*>\s*Opponent\s*<\/th>([\s\S]*?)<\/tr>/i)?.[1] ?? "";
+    const gameIds = [...opponentRow.matchAll(/games\/\d+\/(\d+)\.html/gi)].map((match) => match[1]);
 
     const body = table.match(/<tbody>([\s\S]*?)<\/tbody>/i)?.[1] ?? "";
     const rows = [...body.matchAll(/<tr>([\s\S]*?)<\/tr>/gi)];
@@ -248,6 +250,7 @@ function parseGameByGame(html, team) {
       const round = rounds[index];
       const key = `${team}|${round}`;
       const record = teamMap.get(key) ?? { season: SEASON, team, round };
+      if (gameIds[index]) record.gameId = gameIds[index];
       record[stat] = toNumber(raw) ?? 0;
       teamMap.set(key, record);
     });
@@ -258,6 +261,27 @@ function parseGameByGame(html, team) {
     playerGames.push(record);
   }
   teamGames.push(...teamMap.values());
+}
+
+function enrichOpponentStats() {
+  const byGame = new Map();
+  for (const game of teamGames) {
+    if (!game.gameId) continue;
+    const games = byGame.get(game.gameId) ?? [];
+    games.push(game);
+    byGame.set(game.gameId, games);
+  }
+
+  for (const games of byGame.values()) {
+    if (games.length !== 2) continue;
+    const [homeSide, awaySide] = games;
+    homeSide.opponent = awaySide.team;
+    awaySide.opponent = homeSide.team;
+    homeSide.againstIF = awaySide.IF ?? 0;
+    awaySide.againstIF = homeSide.IF ?? 0;
+    homeSide.againstPoints = (awaySide.GL ?? 0) * 6 + (awaySide.BH ?? 0);
+    awaySide.againstPoints = (homeSide.GL ?? 0) * 6 + (homeSide.BH ?? 0);
+  }
 }
 
 console.log(`Fetching ${SEASON}`);
@@ -273,6 +297,8 @@ for (const { team, slug } of teams) {
   if (!response.ok) throw new Error(`Could not fetch ${team}: ${response.status}`);
   parseGameByGame(await response.text(), team);
 }
+
+enrichOpponentStats();
 
 await mkdir(new URL("../data", import.meta.url), { recursive: true });
 await writeFile(

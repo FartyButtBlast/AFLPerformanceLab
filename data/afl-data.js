@@ -1,5 +1,5 @@
 window.AFL_DATA = {
-  "fetchedAt": "2026-05-06T03:24:37.919Z",
+  "fetchedAt": "2026-05-06T10:22:46.419Z",
   "season": 2026,
   "years": [
     2026
@@ -105240,6 +105240,7 @@ window.AFL_DATA = {
       "season": 2026,
       "team": "Adelaide",
       "round": 2,
+      "gameId": "010420260314",
       "DI": 387,
       "KI": 256,
       "MK": 117,
@@ -105257,12 +105258,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 35,
       "BO": 3,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Collingwood",
+      "againstIF": 59,
+      "againstPoints": 76
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 3,
+      "gameId": "010720260320",
       "DI": 363,
       "KI": 251,
       "MK": 119,
@@ -105280,12 +105285,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 53,
       "BO": 3,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Western Bulldogs",
+      "againstIF": 58,
+      "againstPoints": 91
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 4,
+      "gameId": "010920260326",
       "DI": 329,
       "KI": 208,
       "MK": 65,
@@ -105303,12 +105312,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 43,
       "BO": 3,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Geelong",
+      "againstIF": 67,
+      "againstPoints": 63
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 5,
+      "gameId": "010820260403",
       "DI": 306,
       "KI": 184,
       "MK": 66,
@@ -105326,12 +105339,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 57,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Fremantle",
+      "againstIF": 55,
+      "againstPoints": 78
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 6,
+      "gameId": "010320260409",
       "DI": 393,
       "KI": 220,
       "MK": 55,
@@ -105349,12 +105366,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 69,
       "BO": 3,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Carlton",
+      "againstIF": 60,
+      "againstPoints": 77
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 7,
+      "gameId": "011520260418",
       "DI": 368,
       "KI": 241,
       "MK": 100,
@@ -105372,12 +105393,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 51,
       "BO": 10,
-      "GA": 9
+      "GA": 9,
+      "opponent": "St Kilda",
+      "againstIF": 47,
+      "againstPoints": 102
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 8,
+      "gameId": "011920260426",
       "DI": 353,
       "KI": 208,
       "MK": 97,
@@ -105395,12 +105420,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 37,
       "BO": 4,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Brisbane Lions",
+      "againstIF": 64,
+      "againstPoints": 125
     },
     {
       "season": 2026,
       "team": "Adelaide",
       "round": 9,
+      "gameId": "011320260501",
       "DI": 339,
       "KI": 198,
       "MK": 78,
@@ -105418,12 +105447,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 35,
       "BO": 10,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Port Adelaide",
+      "againstIF": 39,
+      "againstPoints": 75
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 1,
+      "gameId": "071920260307",
       "DI": 408,
       "KI": 254,
       "MK": 115,
@@ -105441,12 +105474,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 42,
       "BO": 5,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Western Bulldogs",
+      "againstIF": 50,
+      "againstPoints": 107
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 2,
+      "gameId": "161920260314",
       "DI": 345,
       "KI": 228,
       "MK": 99,
@@ -105464,12 +105501,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 32,
       "BO": 2,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Sydney",
+      "againstIF": 65,
+      "againstPoints": 100
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 4,
+      "gameId": "151920260328",
       "DI": 399,
       "KI": 253,
       "MK": 107,
@@ -105487,12 +105528,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 46,
       "BO": 2,
-      "GA": 14
+      "GA": 14,
+      "opponent": "St Kilda",
+      "againstIF": 56,
+      "againstPoints": 78
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 5,
+      "gameId": "041920260402",
       "DI": 425,
       "KI": 291,
       "MK": 150,
@@ -105510,12 +105555,16 @@ window.AFL_DATA = {
       "MI": 20,
       "OP": 36,
       "BO": 2,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Collingwood",
+      "againstIF": 45,
+      "againstPoints": 64
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 6,
+      "gameId": "121920260411",
       "DI": 309,
       "KI": 201,
       "MK": 80,
@@ -105533,12 +105582,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 45,
       "BO": 5,
-      "GA": 8
+      "GA": 8,
+      "opponent": "North Melbourne",
+      "againstIF": 44,
+      "againstPoints": 65
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 7,
+      "gameId": "111920260419",
       "DI": 358,
       "KI": 247,
       "MK": 137,
@@ -105556,12 +105609,16 @@ window.AFL_DATA = {
       "MI": 18,
       "OP": 41,
       "BO": 3,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Melbourne",
+      "againstIF": 54,
+      "againstPoints": 100
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 8,
+      "gameId": "011920260426",
       "DI": 397,
       "KI": 261,
       "MK": 131,
@@ -105579,12 +105636,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 33,
       "BO": 7,
-      "GA": 16
+      "GA": 16,
+      "opponent": "Adelaide",
+      "againstIF": 43,
+      "againstPoints": 74
     },
     {
       "season": 2026,
       "team": "Brisbane Lions",
       "round": 9,
+      "gameId": "051920260502",
       "DI": 414,
       "KI": 285,
       "MK": 163,
@@ -105602,12 +105663,16 @@ window.AFL_DATA = {
       "MI": 23,
       "OP": 34,
       "BO": 5,
-      "GA": 19
+      "GA": 19,
+      "opponent": "Essendon",
+      "againstIF": 53,
+      "againstPoints": 76
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 1,
+      "gameId": "031620260305",
       "DI": 382,
       "KI": 212,
       "MK": 69,
@@ -105625,12 +105690,16 @@ window.AFL_DATA = {
       "MI": 5,
       "OP": 63,
       "BO": 17,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Sydney",
+      "againstIF": 67,
+      "againstPoints": 132
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 2,
+      "gameId": "031420260312",
       "DI": 367,
       "KI": 201,
       "MK": 75,
@@ -105648,12 +105717,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 48,
       "BO": 3,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Richmond",
+      "againstIF": 60,
+      "againstPoints": 66
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 4,
+      "gameId": "031120260329",
       "DI": 365,
       "KI": 209,
       "MK": 92,
@@ -105671,12 +105744,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 42,
       "BO": 4,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Melbourne",
+      "againstIF": 64,
+      "againstPoints": 98
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 5,
+      "gameId": "031220260403",
       "DI": 339,
       "KI": 219,
       "MK": 114,
@@ -105694,12 +105771,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 38,
       "BO": 6,
-      "GA": 3
+      "GA": 3,
+      "opponent": "North Melbourne",
+      "againstIF": 56,
+      "againstPoints": 93
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 6,
+      "gameId": "010320260409",
       "DI": 358,
       "KI": 205,
       "MK": 50,
@@ -105717,12 +105798,16 @@ window.AFL_DATA = {
       "MI": 6,
       "OP": 62,
       "BO": 3,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Adelaide",
+      "againstIF": 56,
+      "againstPoints": 111
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 7,
+      "gameId": "030420260416",
       "DI": 390,
       "KI": 226,
       "MK": 101,
@@ -105740,12 +105825,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 37,
       "BO": 4,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Collingwood",
+      "againstIF": 58,
+      "againstPoints": 87
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 8,
+      "gameId": "030820260425",
       "DI": 356,
       "KI": 190,
       "MK": 85,
@@ -105763,12 +105852,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 46,
       "BO": 7,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Fremantle",
+      "againstIF": 51,
+      "againstPoints": 101
     },
     {
       "season": 2026,
       "team": "Carlton",
       "round": 9,
+      "gameId": "031520260502",
       "DI": 363,
       "KI": 226,
       "MK": 118,
@@ -105786,12 +105879,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 46,
       "BO": 12,
-      "GA": 6
+      "GA": 6,
+      "opponent": "St Kilda",
+      "againstIF": 46,
+      "againstPoints": 106
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 1,
+      "gameId": "041520260308",
       "DI": 434,
       "KI": 264,
       "MK": 147,
@@ -105809,12 +105906,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 35,
       "BO": 5,
-      "GA": 9
+      "GA": 9,
+      "opponent": "St Kilda",
+      "againstIF": 63,
+      "againstPoints": 65
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 2,
+      "gameId": "010420260314",
       "DI": 365,
       "KI": 213,
       "MK": 98,
@@ -105832,12 +105933,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 47,
       "BO": 7,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Adelaide",
+      "againstIF": 55,
+      "againstPoints": 92
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 4,
+      "gameId": "042120260327",
       "DI": 363,
       "KI": 211,
       "MK": 104,
@@ -105855,12 +105960,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 43,
       "BO": 11,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 58,
+      "againstPoints": 51
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 5,
+      "gameId": "041920260402",
       "DI": 310,
       "KI": 162,
       "MK": 71,
@@ -105878,12 +105987,16 @@ window.AFL_DATA = {
       "MI": 5,
       "OP": 49,
       "BO": 6,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Brisbane Lions",
+      "againstIF": 64,
+      "againstPoints": 116
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 6,
+      "gameId": "040820260410",
       "DI": 364,
       "KI": 222,
       "MK": 101,
@@ -105901,12 +106014,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 51,
       "BO": 1,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Fremantle",
+      "againstIF": 45,
+      "againstPoints": 45
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 7,
+      "gameId": "030420260416",
       "DI": 416,
       "KI": 252,
       "MK": 136,
@@ -105924,12 +106041,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 36,
       "BO": 3,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Carlton",
+      "againstIF": 44,
+      "againstPoints": 82
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 8,
+      "gameId": "040520260425",
       "DI": 458,
       "KI": 244,
       "MK": 134,
@@ -105947,12 +106068,16 @@ window.AFL_DATA = {
       "MI": 18,
       "OP": 27,
       "BO": 6,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Essendon",
+      "againstIF": 34,
+      "againstPoints": 60
     },
     {
       "season": 2026,
       "team": "Collingwood",
       "round": 9,
+      "gameId": "041020260430",
       "DI": 345,
       "KI": 200,
       "MK": 100,
@@ -105970,12 +106095,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 44,
       "BO": 3,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Hawthorn",
+      "againstIF": 62,
+      "againstPoints": 89
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 2,
+      "gameId": "051020260313",
       "DI": 338,
       "KI": 175,
       "MK": 75,
@@ -105993,12 +106122,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 27,
       "BO": 14,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Hawthorn",
+      "againstIF": 69,
+      "againstPoints": 144
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 3,
+      "gameId": "051320260322",
       "DI": 337,
       "KI": 172,
       "MK": 58,
@@ -106016,12 +106149,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 30,
       "BO": 7,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Port Adelaide",
+      "againstIF": 60,
+      "againstPoints": 133
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 4,
+      "gameId": "051220260328",
       "DI": 328,
       "KI": 178,
       "MK": 85,
@@ -106039,12 +106176,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 27,
       "BO": 9,
-      "GA": 9
+      "GA": 9,
+      "opponent": "North Melbourne",
+      "againstIF": 49,
+      "againstPoints": 79
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 5,
+      "gameId": "050720260405",
       "DI": 342,
       "KI": 203,
       "MK": 103,
@@ -106062,12 +106203,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 31,
       "BO": 8,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Western Bulldogs",
+      "againstIF": 54,
+      "againstPoints": 97
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 6,
+      "gameId": "051120260411",
       "DI": 441,
       "KI": 272,
       "MK": 139,
@@ -106085,12 +106230,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 32,
       "BO": 8,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Melbourne",
+      "againstIF": 52,
+      "againstPoints": 66
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 7,
+      "gameId": "052020260418",
       "DI": 365,
       "KI": 227,
       "MK": 98,
@@ -106108,12 +106257,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 36,
       "BO": 10,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Gold Coast",
+      "againstIF": 60,
+      "againstPoints": 116
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 8,
+      "gameId": "040520260425",
       "DI": 365,
       "KI": 192,
       "MK": 89,
@@ -106131,12 +106284,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 31,
       "BO": 16,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Collingwood",
+      "againstIF": 62,
+      "againstPoints": 136
     },
     {
       "season": 2026,
       "team": "Essendon",
       "round": 9,
+      "gameId": "051920260502",
       "DI": 350,
       "KI": 182,
       "MK": 78,
@@ -106154,12 +106311,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 28,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Brisbane Lions",
+      "againstIF": 63,
+      "againstPoints": 142
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 2,
+      "gameId": "080920260314",
       "DI": 329,
       "KI": 181,
       "MK": 61,
@@ -106177,12 +106338,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 36,
       "BO": 7,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Geelong",
+      "againstIF": 60,
+      "againstPoints": 109
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 3,
+      "gameId": "081120260321",
       "DI": 417,
       "KI": 224,
       "MK": 93,
@@ -106200,12 +106365,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 50,
       "BO": 20,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Melbourne",
+      "againstIF": 56,
+      "againstPoints": 69
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 4,
+      "gameId": "081420260328",
       "DI": 406,
       "KI": 230,
       "MK": 95,
@@ -106223,12 +106392,16 @@ window.AFL_DATA = {
       "MI": 17,
       "OP": 43,
       "BO": 8,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Richmond",
+      "againstIF": 36,
+      "againstPoints": 43
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 5,
+      "gameId": "010820260403",
       "DI": 365,
       "KI": 199,
       "MK": 64,
@@ -106246,12 +106419,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 44,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Adelaide",
+      "againstIF": 48,
+      "againstPoints": 75
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 6,
+      "gameId": "040820260410",
       "DI": 358,
       "KI": 212,
       "MK": 81,
@@ -106269,12 +106446,16 @@ window.AFL_DATA = {
       "MI": 5,
       "OP": 52,
       "BO": 4,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Collingwood",
+      "againstIF": 61,
+      "againstPoints": 38
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 7,
+      "gameId": "081820260419",
       "DI": 365,
       "KI": 226,
       "MK": 120,
@@ -106292,12 +106473,16 @@ window.AFL_DATA = {
       "MI": 19,
       "OP": 44,
       "BO": 11,
-      "GA": 12
+      "GA": 12,
+      "opponent": "West Coast",
+      "againstIF": 51,
+      "againstPoints": 40
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 8,
+      "gameId": "030820260425",
       "DI": 404,
       "KI": 218,
       "MK": 103,
@@ -106315,12 +106500,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 42,
       "BO": 9,
-      "GA": 15
+      "GA": 15,
+      "opponent": "Carlton",
+      "againstIF": 53,
+      "againstPoints": 86
     },
     {
       "season": 2026,
       "team": "Fremantle",
       "round": 9,
+      "gameId": "070820260501",
       "DI": 353,
       "KI": 209,
       "MK": 75,
@@ -106338,12 +106527,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 42,
       "BO": 7,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Western Bulldogs",
+      "againstIF": 52,
+      "againstPoints": 98
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 1,
+      "gameId": "092020260306",
       "DI": 381,
       "KI": 208,
       "MK": 78,
@@ -106361,12 +106554,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 48,
       "BO": 4,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Gold Coast",
+      "againstIF": 71,
+      "againstPoints": 125
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 2,
+      "gameId": "080920260314",
       "DI": 361,
       "KI": 231,
       "MK": 111,
@@ -106384,12 +106581,16 @@ window.AFL_DATA = {
       "MI": 18,
       "OP": 56,
       "BO": 7,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Fremantle",
+      "againstIF": 46,
+      "againstPoints": 97
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 4,
+      "gameId": "010920260326",
       "DI": 409,
       "KI": 261,
       "MK": 98,
@@ -106407,12 +106608,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 50,
       "BO": 1,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Adelaide",
+      "againstIF": 45,
+      "againstPoints": 58
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 5,
+      "gameId": "091020260406",
       "DI": 342,
       "KI": 217,
       "MK": 101,
@@ -106430,12 +106635,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 39,
       "BO": 8,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Hawthorn",
+      "againstIF": 53,
+      "againstPoints": 90
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 6,
+      "gameId": "091820260412",
       "DI": 379,
       "KI": 227,
       "MK": 95,
@@ -106453,12 +106662,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 39,
       "BO": 8,
-      "GA": 11
+      "GA": 11,
+      "opponent": "West Coast",
+      "againstIF": 42,
+      "againstPoints": 75
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 7,
+      "gameId": "070920260417",
       "DI": 399,
       "KI": 237,
       "MK": 103,
@@ -106476,12 +106689,16 @@ window.AFL_DATA = {
       "MI": 21,
       "OP": 40,
       "BO": 5,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Western Bulldogs",
+      "againstIF": 41,
+      "againstPoints": 52
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 8,
+      "gameId": "091320260425",
       "DI": 332,
       "KI": 195,
       "MK": 89,
@@ -106499,12 +106716,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 36,
       "BO": 9,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Port Adelaide",
+      "againstIF": 58,
+      "againstPoints": 89
     },
     {
       "season": 2026,
       "team": "Geelong",
       "round": 9,
+      "gameId": "091220260502",
       "DI": 371,
       "KI": 203,
       "MK": 81,
@@ -106522,12 +106743,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 42,
       "BO": 8,
-      "GA": 12
+      "GA": 12,
+      "opponent": "North Melbourne",
+      "againstIF": 50,
+      "againstPoints": 84
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 1,
+      "gameId": "092020260306",
       "DI": 412,
       "KI": 210,
       "MK": 74,
@@ -106545,12 +106770,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 50,
       "BO": 13,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Geelong",
+      "againstIF": 50,
+      "againstPoints": 68
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 2,
+      "gameId": "182020260315",
       "DI": 369,
       "KI": 190,
       "MK": 80,
@@ -106568,12 +106797,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 47,
       "BO": 15,
-      "GA": 14
+      "GA": 14,
+      "opponent": "West Coast",
+      "againstIF": 39,
+      "againstPoints": 69
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 3,
+      "gameId": "142020260321",
       "DI": 385,
       "KI": 221,
       "MK": 127,
@@ -106591,12 +106824,16 @@ window.AFL_DATA = {
       "MI": 23,
       "OP": 50,
       "BO": 8,
-      "GA": 16
+      "GA": 16,
+      "opponent": "Richmond",
+      "againstIF": 36,
+      "againstPoints": 59
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 5,
+      "gameId": "112020260405",
       "DI": 351,
       "KI": 188,
       "MK": 90,
@@ -106614,12 +106851,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 34,
       "BO": 10,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Melbourne",
+      "againstIF": 59,
+      "againstPoints": 107
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 6,
+      "gameId": "162020260411",
       "DI": 333,
       "KI": 180,
       "MK": 50,
@@ -106637,12 +106878,16 @@ window.AFL_DATA = {
       "MI": 4,
       "OP": 41,
       "BO": 4,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Sydney",
+      "againstIF": 62,
+      "againstPoints": 99
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 7,
+      "gameId": "052020260418",
       "DI": 381,
       "KI": 199,
       "MK": 86,
@@ -106660,12 +106905,16 @@ window.AFL_DATA = {
       "MI": 17,
       "OP": 30,
       "BO": 9,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Essendon",
+      "againstIF": 55,
+      "againstPoints": 108
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 8,
+      "gameId": "102020260425",
       "DI": 345,
       "KI": 184,
       "MK": 67,
@@ -106683,12 +106932,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 40,
       "BO": 9,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Hawthorn",
+      "againstIF": 54,
+      "againstPoints": 109
     },
     {
       "season": 2026,
       "team": "Gold Coast",
       "round": 9,
+      "gameId": "202120260503",
       "DI": 397,
       "KI": 238,
       "MK": 126,
@@ -106706,12 +106959,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 32,
       "BO": 9,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 49,
+      "againstPoints": 61
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 1,
+      "gameId": "102120260307",
       "DI": 357,
       "KI": 224,
       "MK": 91,
@@ -106729,12 +106986,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 52,
       "BO": 9,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Hawthorn",
+      "againstIF": 58,
+      "againstPoints": 92
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 2,
+      "gameId": "072120260314",
       "DI": 387,
       "KI": 241,
       "MK": 127,
@@ -106752,12 +107013,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 32,
       "BO": 2,
-      "GA": 3
+      "GA": 3,
+      "opponent": "Western Bulldogs",
+      "againstIF": 55,
+      "againstPoints": 132
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 3,
+      "gameId": "152120260321",
       "DI": 419,
       "KI": 214,
       "MK": 86,
@@ -106775,12 +107040,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 49,
       "BO": 9,
-      "GA": 8
+      "GA": 8,
+      "opponent": "St Kilda",
+      "againstIF": 53,
+      "againstPoints": 78
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 4,
+      "gameId": "042120260327",
       "DI": 425,
       "KI": 225,
       "MK": 124,
@@ -106798,12 +107067,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 40,
       "BO": 8,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Collingwood",
+      "againstIF": 50,
+      "againstPoints": 84
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 6,
+      "gameId": "142120260412",
       "DI": 425,
       "KI": 214,
       "MK": 90,
@@ -106821,12 +107094,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 42,
       "BO": 10,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Richmond",
+      "againstIF": 59,
+      "againstPoints": 74
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 7,
+      "gameId": "162120260417",
       "DI": 406,
       "KI": 210,
       "MK": 69,
@@ -106844,12 +107121,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 51,
       "BO": 4,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Sydney",
+      "againstIF": 70,
+      "againstPoints": 105
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 8,
+      "gameId": "122120260426",
       "DI": 376,
       "KI": 196,
       "MK": 78,
@@ -106867,12 +107148,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 47,
       "BO": 8,
-      "GA": 11
+      "GA": 11,
+      "opponent": "North Melbourne",
+      "againstIF": 54,
+      "againstPoints": 92
     },
     {
       "season": 2026,
       "team": "Greater Western Sydney",
       "round": 9,
+      "gameId": "202120260503",
       "DI": 371,
       "KI": 198,
       "MK": 71,
@@ -106890,12 +107175,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 61,
       "BO": 3,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Gold Coast",
+      "againstIF": 58,
+      "againstPoints": 78
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 1,
+      "gameId": "102120260307",
       "DI": 341,
       "KI": 210,
       "MK": 78,
@@ -106913,12 +107202,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 42,
       "BO": 9,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 63,
+      "againstPoints": 121
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 2,
+      "gameId": "051020260313",
       "DI": 409,
       "KI": 265,
       "MK": 157,
@@ -106936,12 +107229,16 @@ window.AFL_DATA = {
       "MI": 23,
       "OP": 27,
       "BO": 12,
-      "GA": 17
+      "GA": 17,
+      "opponent": "Essendon",
+      "againstIF": 40,
+      "againstPoints": 83
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 3,
+      "gameId": "101620260319",
       "DI": 417,
       "KI": 235,
       "MK": 101,
@@ -106959,12 +107256,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 52,
       "BO": 11,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Sydney",
+      "againstIF": 58,
+      "againstPoints": 82
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 5,
+      "gameId": "091020260406",
       "DI": 387,
       "KI": 232,
       "MK": 90,
@@ -106982,12 +107283,16 @@ window.AFL_DATA = {
       "MI": 18,
       "OP": 39,
       "BO": 11,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Geelong",
+      "againstIF": 54,
+      "againstPoints": 90
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 6,
+      "gameId": "071020260411",
       "DI": 402,
       "KI": 250,
       "MK": 126,
@@ -107005,12 +107310,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 31,
       "BO": 16,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Western Bulldogs",
+      "againstIF": 53,
+      "againstPoints": 63
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 7,
+      "gameId": "101320260418",
       "DI": 349,
       "KI": 217,
       "MK": 106,
@@ -107028,12 +107337,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 30,
       "BO": 4,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Port Adelaide",
+      "againstIF": 45,
+      "againstPoints": 85
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 8,
+      "gameId": "102020260425",
       "DI": 437,
       "KI": 227,
       "MK": 99,
@@ -107051,12 +107364,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 41,
       "BO": 18,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Gold Coast",
+      "againstIF": 60,
+      "againstPoints": 62
     },
     {
       "season": 2026,
       "team": "Hawthorn",
       "round": 9,
+      "gameId": "041020260430",
       "DI": 420,
       "KI": 236,
       "MK": 109,
@@ -107074,12 +107391,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 32,
       "BO": 5,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Collingwood",
+      "againstIF": 34,
+      "againstPoints": 93
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 2,
+      "gameId": "111520260315",
       "DI": 341,
       "KI": 212,
       "MK": 82,
@@ -107097,12 +107418,16 @@ window.AFL_DATA = {
       "MI": 19,
       "OP": 44,
       "BO": 15,
-      "GA": 12
+      "GA": 12,
+      "opponent": "St Kilda",
+      "againstIF": 53,
+      "againstPoints": 103
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 3,
+      "gameId": "081120260321",
       "DI": 333,
       "KI": 222,
       "MK": 99,
@@ -107120,12 +107445,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 41,
       "BO": 4,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Fremantle",
+      "againstIF": 58,
+      "againstPoints": 115
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 4,
+      "gameId": "031120260329",
       "DI": 372,
       "KI": 214,
       "MK": 95,
@@ -107143,12 +107472,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 38,
       "BO": 7,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Carlton",
+      "againstIF": 51,
+      "againstPoints": 76
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 5,
+      "gameId": "112020260405",
       "DI": 341,
       "KI": 210,
       "MK": 89,
@@ -107166,12 +107499,16 @@ window.AFL_DATA = {
       "MI": 19,
       "OP": 34,
       "BO": 15,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Gold Coast",
+      "againstIF": 45,
+      "againstPoints": 88
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 6,
+      "gameId": "051120260411",
       "DI": 332,
       "KI": 197,
       "MK": 78,
@@ -107189,12 +107526,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 40,
       "BO": 7,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Essendon",
+      "againstIF": 54,
+      "againstPoints": 110
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 7,
+      "gameId": "111920260419",
       "DI": 345,
       "KI": 200,
       "MK": 80,
@@ -107212,12 +107553,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 35,
       "BO": 14,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Brisbane Lions",
+      "againstIF": 52,
+      "againstPoints": 100
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 8,
+      "gameId": "111420260424",
       "DI": 362,
       "KI": 212,
       "MK": 78,
@@ -107235,12 +107580,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 46,
       "BO": 14,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Richmond",
+      "againstIF": 47,
+      "againstPoints": 71
     },
     {
       "season": 2026,
       "team": "Melbourne",
       "round": 9,
+      "gameId": "111620260503",
       "DI": 338,
       "KI": 185,
       "MK": 56,
@@ -107258,12 +107607,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 39,
       "BO": 9,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Sydney",
+      "againstIF": 63,
+      "againstPoints": 128
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 2,
+      "gameId": "121320260315",
       "DI": 370,
       "KI": 232,
       "MK": 119,
@@ -107281,12 +107634,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 33,
       "BO": 5,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Port Adelaide",
+      "againstIF": 47,
+      "againstPoints": 65
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 3,
+      "gameId": "121820260322",
       "DI": 369,
       "KI": 192,
       "MK": 67,
@@ -107304,12 +107661,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 53,
       "BO": 14,
-      "GA": 10
+      "GA": 10,
+      "opponent": "West Coast",
+      "againstIF": 59,
+      "againstPoints": 110
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 4,
+      "gameId": "051220260328",
       "DI": 405,
       "KI": 254,
       "MK": 138,
@@ -107327,12 +107688,16 @@ window.AFL_DATA = {
       "MI": 20,
       "OP": 40,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Essendon",
+      "againstIF": 52,
+      "againstPoints": 67
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 5,
+      "gameId": "031220260403",
       "DI": 352,
       "KI": 211,
       "MK": 90,
@@ -107350,12 +107715,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 41,
       "BO": 14,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Carlton",
+      "againstIF": 48,
+      "againstPoints": 85
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 6,
+      "gameId": "121920260411",
       "DI": 350,
       "KI": 200,
       "MK": 83,
@@ -107373,12 +107742,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 36,
       "BO": 8,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Brisbane Lions",
+      "againstIF": 58,
+      "againstPoints": 89
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 7,
+      "gameId": "121420260419",
       "DI": 428,
       "KI": 244,
       "MK": 116,
@@ -107396,12 +107769,16 @@ window.AFL_DATA = {
       "MI": 19,
       "OP": 38,
       "BO": 21,
-      "GA": 16
+      "GA": 16,
+      "opponent": "Richmond",
+      "againstIF": 49,
+      "againstPoints": 53
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 8,
+      "gameId": "122120260426",
       "DI": 391,
       "KI": 219,
       "MK": 94,
@@ -107419,12 +107796,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 44,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 56,
+      "againstPoints": 103
     },
     {
       "season": 2026,
       "team": "North Melbourne",
       "round": 9,
+      "gameId": "091220260502",
       "DI": 367,
       "KI": 183,
       "MK": 68,
@@ -107442,12 +107823,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 31,
       "BO": 8,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Geelong",
+      "againstIF": 60,
+      "againstPoints": 134
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 2,
+      "gameId": "121320260315",
       "DI": 287,
       "KI": 186,
       "MK": 74,
@@ -107465,12 +107850,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 43,
       "BO": 1,
-      "GA": 8
+      "GA": 8,
+      "opponent": "North Melbourne",
+      "againstIF": 51,
+      "againstPoints": 112
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 3,
+      "gameId": "051320260322",
       "DI": 407,
       "KI": 284,
       "MK": 165,
@@ -107488,12 +107877,16 @@ window.AFL_DATA = {
       "MI": 25,
       "OP": 35,
       "BO": 6,
-      "GA": 15
+      "GA": 15,
+      "opponent": "Essendon",
+      "againstIF": 43,
+      "againstPoints": 67
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 4,
+      "gameId": "131820260329",
       "DI": 340,
       "KI": 206,
       "MK": 91,
@@ -107511,12 +107904,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 34,
       "BO": 7,
-      "GA": 12
+      "GA": 12,
+      "opponent": "West Coast",
+      "againstIF": 42,
+      "againstPoints": 92
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 5,
+      "gameId": "131420260404",
       "DI": 340,
       "KI": 207,
       "MK": 97,
@@ -107534,12 +107931,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 37,
       "BO": 12,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Richmond",
+      "againstIF": 50,
+      "againstPoints": 45
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 6,
+      "gameId": "131520260412",
       "DI": 364,
       "KI": 241,
       "MK": 107,
@@ -107557,12 +107958,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 49,
       "BO": 2,
-      "GA": 8
+      "GA": 8,
+      "opponent": "St Kilda",
+      "againstIF": 39,
+      "againstPoints": 79
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 7,
+      "gameId": "101320260418",
       "DI": 325,
       "KI": 203,
       "MK": 97,
@@ -107580,12 +107985,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 41,
       "BO": 9,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Hawthorn",
+      "againstIF": 52,
+      "againstPoints": 89
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 8,
+      "gameId": "091320260425",
       "DI": 404,
       "KI": 247,
       "MK": 127,
@@ -107603,12 +108012,16 @@ window.AFL_DATA = {
       "MI": 17,
       "OP": 43,
       "BO": 9,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Geelong",
+      "againstIF": 35,
+      "againstPoints": 63
     },
     {
       "season": 2026,
       "team": "Port Adelaide",
       "round": 9,
+      "gameId": "011320260501",
       "DI": 356,
       "KI": 219,
       "MK": 103,
@@ -107626,12 +108039,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 46,
       "BO": 10,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Adelaide",
+      "againstIF": 59,
+      "againstPoints": 75
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 2,
+      "gameId": "031420260312",
       "DI": 355,
       "KI": 217,
       "MK": 97,
@@ -107649,12 +108066,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 47,
       "BO": 5,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Carlton",
+      "againstIF": 43,
+      "againstPoints": 73
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 3,
+      "gameId": "142020260321",
       "DI": 330,
       "KI": 186,
       "MK": 83,
@@ -107672,12 +108093,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 28,
       "BO": 10,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Gold Coast",
+      "againstIF": 61,
+      "againstPoints": 126
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 4,
+      "gameId": "081420260328",
       "DI": 314,
       "KI": 170,
       "MK": 64,
@@ -107695,12 +108120,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 41,
       "BO": 9,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Fremantle",
+      "againstIF": 65,
+      "againstPoints": 100
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 5,
+      "gameId": "131420260404",
       "DI": 328,
       "KI": 200,
       "MK": 90,
@@ -107718,12 +108147,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 41,
       "BO": 8,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Port Adelaide",
+      "againstIF": 46,
+      "againstPoints": 87
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 6,
+      "gameId": "142120260412",
       "DI": 333,
       "KI": 189,
       "MK": 79,
@@ -107741,12 +108174,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 44,
       "BO": 1,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 54,
+      "againstPoints": 130
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 7,
+      "gameId": "121420260419",
       "DI": 280,
       "KI": 165,
       "MK": 82,
@@ -107764,12 +108201,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 46,
       "BO": 9,
-      "GA": 5
+      "GA": 5,
+      "opponent": "North Melbourne",
+      "againstIF": 58,
+      "againstPoints": 128
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 8,
+      "gameId": "111420260424",
       "DI": 343,
       "KI": 182,
       "MK": 71,
@@ -107787,12 +108228,16 @@ window.AFL_DATA = {
       "MI": 11,
       "OP": 38,
       "BO": 8,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Melbourne",
+      "againstIF": 61,
+      "againstPoints": 124
     },
     {
       "season": 2026,
       "team": "Richmond",
       "round": 9,
+      "gameId": "141820260502",
       "DI": 348,
       "KI": 210,
       "MK": 90,
@@ -107810,12 +108255,16 @@ window.AFL_DATA = {
       "MI": 15,
       "OP": 38,
       "BO": 12,
-      "GA": 10
+      "GA": 10,
+      "opponent": "West Coast",
+      "againstIF": 64,
+      "againstPoints": 86
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 1,
+      "gameId": "041520260308",
       "DI": 387,
       "KI": 225,
       "MK": 92,
@@ -107833,12 +108282,16 @@ window.AFL_DATA = {
       "MI": 6,
       "OP": 47,
       "BO": 13,
-      "GA": 4
+      "GA": 4,
+      "opponent": "Collingwood",
+      "againstIF": 40,
+      "againstPoints": 75
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 2,
+      "gameId": "111520260315",
       "DI": 411,
       "KI": 241,
       "MK": 106,
@@ -107856,12 +108309,16 @@ window.AFL_DATA = {
       "MI": 20,
       "OP": 52,
       "BO": 6,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Melbourne",
+      "againstIF": 56,
+      "againstPoints": 119
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 3,
+      "gameId": "152120260321",
       "DI": 367,
       "KI": 236,
       "MK": 81,
@@ -107879,12 +108336,16 @@ window.AFL_DATA = {
       "MI": 6,
       "OP": 56,
       "BO": 12,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 62,
+      "againstPoints": 72
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 4,
+      "gameId": "151920260328",
       "DI": 336,
       "KI": 207,
       "MK": 93,
@@ -107902,12 +108363,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 49,
       "BO": 4,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Brisbane Lions",
+      "againstIF": 52,
+      "againstPoints": 112
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 6,
+      "gameId": "131520260412",
       "DI": 342,
       "KI": 224,
       "MK": 90,
@@ -107925,12 +108390,16 @@ window.AFL_DATA = {
       "MI": 4,
       "OP": 52,
       "BO": 4,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Port Adelaide",
+      "againstIF": 60,
+      "againstPoints": 65
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 7,
+      "gameId": "011520260418",
       "DI": 387,
       "KI": 229,
       "MK": 102,
@@ -107948,12 +108417,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 44,
       "BO": 6,
-      "GA": 10
+      "GA": 10,
+      "opponent": "Adelaide",
+      "againstIF": 56,
+      "againstPoints": 103
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 8,
+      "gameId": "151820260426",
       "DI": 432,
       "KI": 267,
       "MK": 146,
@@ -107971,12 +108444,16 @@ window.AFL_DATA = {
       "MI": 21,
       "OP": 33,
       "BO": 8,
-      "GA": 17
+      "GA": 17,
+      "opponent": "West Coast",
+      "againstIF": 48,
+      "againstPoints": 38
     },
     {
       "season": 2026,
       "team": "St Kilda",
       "round": 9,
+      "gameId": "031520260502",
       "DI": 372,
       "KI": 234,
       "MK": 118,
@@ -107994,12 +108471,16 @@ window.AFL_DATA = {
       "MI": 23,
       "OP": 39,
       "BO": 12,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Carlton",
+      "againstIF": 50,
+      "againstPoints": 67
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 1,
+      "gameId": "031620260305",
       "DI": 384,
       "KI": 203,
       "MK": 64,
@@ -108017,12 +108498,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 58,
       "BO": 21,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Carlton",
+      "againstIF": 50,
+      "againstPoints": 67
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 2,
+      "gameId": "161920260314",
       "DI": 386,
       "KI": 203,
       "MK": 92,
@@ -108040,12 +108525,16 @@ window.AFL_DATA = {
       "MI": 18,
       "OP": 55,
       "BO": 7,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Brisbane Lions",
+      "againstIF": 46,
+      "againstPoints": 57
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 3,
+      "gameId": "101620260319",
       "DI": 348,
       "KI": 195,
       "MK": 58,
@@ -108063,12 +108552,16 @@ window.AFL_DATA = {
       "MI": 4,
       "OP": 52,
       "BO": 13,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Hawthorn",
+      "againstIF": 55,
+      "againstPoints": 99
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 5,
+      "gameId": "161820260404",
       "DI": 427,
       "KI": 245,
       "MK": 123,
@@ -108086,12 +108579,16 @@ window.AFL_DATA = {
       "MI": 24,
       "OP": 38,
       "BO": 17,
-      "GA": 20
+      "GA": 20,
+      "opponent": "West Coast",
+      "againstIF": 45,
+      "againstPoints": 31
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 6,
+      "gameId": "162020260411",
       "DI": 391,
       "KI": 210,
       "MK": 66,
@@ -108109,12 +108606,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 51,
       "BO": 11,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Gold Coast",
+      "againstIF": 56,
+      "againstPoints": 64
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 7,
+      "gameId": "162120260417",
       "DI": 412,
       "KI": 219,
       "MK": 85,
@@ -108132,12 +108633,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 51,
       "BO": 27,
-      "GA": 14
+      "GA": 14,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 59,
+      "againstPoints": 62
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 8,
+      "gameId": "071620260423",
       "DI": 399,
       "KI": 215,
       "MK": 91,
@@ -108155,12 +108660,16 @@ window.AFL_DATA = {
       "MI": 23,
       "OP": 50,
       "BO": 15,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Western Bulldogs",
+      "againstIF": 46,
+      "againstPoints": 60
     },
     {
       "season": 2026,
       "team": "Sydney",
       "round": 9,
+      "gameId": "111620260503",
       "DI": 425,
       "KI": 220,
       "MK": 95,
@@ -108178,12 +108687,16 @@ window.AFL_DATA = {
       "MI": 16,
       "OP": 47,
       "BO": 13,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Melbourne",
+      "againstIF": 59,
+      "againstPoints": 113
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 2,
+      "gameId": "182020260315",
       "DI": 328,
       "KI": 206,
       "MK": 98,
@@ -108201,12 +108714,16 @@ window.AFL_DATA = {
       "MI": 8,
       "OP": 42,
       "BO": 11,
-      "GA": 6
+      "GA": 6,
+      "opponent": "Gold Coast",
+      "againstIF": 60,
+      "againstPoints": 130
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 3,
+      "gameId": "121820260322",
       "DI": 356,
       "KI": 205,
       "MK": 67,
@@ -108224,12 +108741,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 46,
       "BO": 6,
-      "GA": 14
+      "GA": 14,
+      "opponent": "North Melbourne",
+      "againstIF": 48,
+      "againstPoints": 94
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 4,
+      "gameId": "131820260329",
       "DI": 303,
       "KI": 184,
       "MK": 70,
@@ -108247,12 +108768,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 40,
       "BO": 7,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Port Adelaide",
+      "againstIF": 54,
+      "againstPoints": 88
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 5,
+      "gameId": "161820260404",
       "DI": 289,
       "KI": 166,
       "MK": 76,
@@ -108270,12 +108795,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 28,
       "BO": 7,
-      "GA": 3
+      "GA": 3,
+      "opponent": "Sydney",
+      "againstIF": 61,
+      "againstPoints": 161
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 6,
+      "gameId": "091820260412",
       "DI": 329,
       "KI": 197,
       "MK": 72,
@@ -108293,12 +108822,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 36,
       "BO": 5,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Geelong",
+      "againstIF": 67,
+      "againstPoints": 119
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 7,
+      "gameId": "081820260419",
       "DI": 333,
       "KI": 209,
       "MK": 98,
@@ -108316,12 +108849,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 40,
       "BO": 3,
-      "GA": 5
+      "GA": 5,
+      "opponent": "Fremantle",
+      "againstIF": 50,
+      "againstPoints": 95
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 8,
+      "gameId": "151820260426",
       "DI": 349,
       "KI": 195,
       "MK": 97,
@@ -108339,12 +108876,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 44,
       "BO": 10,
-      "GA": 4
+      "GA": 4,
+      "opponent": "St Kilda",
+      "againstIF": 59,
+      "againstPoints": 142
     },
     {
       "season": 2026,
       "team": "West Coast",
       "round": 9,
+      "gameId": "141820260502",
       "DI": 350,
       "KI": 202,
       "MK": 95,
@@ -108362,12 +108903,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 46,
       "BO": 8,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Richmond",
+      "againstIF": 48,
+      "againstPoints": 98
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 1,
+      "gameId": "071920260307",
       "DI": 361,
       "KI": 211,
       "MK": 78,
@@ -108385,12 +108930,16 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 53,
       "BO": 6,
-      "GA": 13
+      "GA": 13,
+      "opponent": "Brisbane Lions",
+      "againstIF": 63,
+      "againstPoints": 104
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 2,
+      "gameId": "072120260314",
       "DI": 406,
       "KI": 243,
       "MK": 118,
@@ -108408,12 +108957,16 @@ window.AFL_DATA = {
       "MI": 19,
       "OP": 42,
       "BO": 7,
-      "GA": 17
+      "GA": 17,
+      "opponent": "Greater Western Sydney",
+      "againstIF": 50,
+      "againstPoints": 52
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 3,
+      "gameId": "010720260320",
       "DI": 367,
       "KI": 202,
       "MK": 61,
@@ -108431,12 +108984,16 @@ window.AFL_DATA = {
       "MI": 7,
       "OP": 58,
       "BO": 12,
-      "GA": 9
+      "GA": 9,
+      "opponent": "Adelaide",
+      "againstIF": 52,
+      "againstPoints": 83
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 5,
+      "gameId": "050720260405",
       "DI": 402,
       "KI": 211,
       "MK": 107,
@@ -108454,12 +109011,16 @@ window.AFL_DATA = {
       "MI": 14,
       "OP": 54,
       "BO": 10,
-      "GA": 11
+      "GA": 11,
+      "opponent": "Essendon",
+      "againstIF": 36,
+      "againstPoints": 63
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 6,
+      "gameId": "071020260411",
       "DI": 337,
       "KI": 201,
       "MK": 81,
@@ -108477,12 +109038,16 @@ window.AFL_DATA = {
       "MI": 12,
       "OP": 43,
       "BO": 4,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Hawthorn",
+      "againstIF": 54,
+      "againstPoints": 102
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 7,
+      "gameId": "070920260417",
       "DI": 345,
       "KI": 188,
       "MK": 74,
@@ -108500,12 +109065,16 @@ window.AFL_DATA = {
       "MI": 13,
       "OP": 47,
       "BO": 10,
-      "GA": 7
+      "GA": 7,
+      "opponent": "Geelong",
+      "againstIF": 67,
+      "againstPoints": 128
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 8,
+      "gameId": "071620260423",
       "DI": 362,
       "KI": 208,
       "MK": 84,
@@ -108523,12 +109092,16 @@ window.AFL_DATA = {
       "MI": 9,
       "OP": 60,
       "BO": 5,
-      "GA": 8
+      "GA": 8,
+      "opponent": "Sydney",
+      "againstIF": 69,
+      "againstPoints": 120
     },
     {
       "season": 2026,
       "team": "Western Bulldogs",
       "round": 9,
+      "gameId": "070820260501",
       "DI": 371,
       "KI": 207,
       "MK": 81,
@@ -108546,7 +109119,10 @@ window.AFL_DATA = {
       "MI": 10,
       "OP": 51,
       "BO": 6,
-      "GA": 12
+      "GA": 12,
+      "opponent": "Fremantle",
+      "againstIF": 63,
+      "againstPoints": 113
     }
   ]
 };

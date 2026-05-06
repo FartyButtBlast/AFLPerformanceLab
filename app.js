@@ -103,6 +103,77 @@ function avg(rows, stat) {
   return rows.reduce((sum, row) => sum + statValue(row, stat), 0) / rows.length;
 }
 
+function safeRatio(numerator, denominator, fallback = 0) {
+  return denominator ? numerator / denominator : fallback;
+}
+
+function teamPoints(record) {
+  return (record?.GL ?? 0) * 6 + (record?.BH ?? 0);
+}
+
+function seasonPlayerRecord(team, player) {
+  return data.players.find((row) => row.team === team && row.player === player);
+}
+
+function roleContribution(record, role) {
+  if (!record) return 0;
+  if (role === "Offence") {
+    return teamPoints(record) + (record.GA ?? 0) * 3 + (record.MI ?? 0) * 2 + (record.IF ?? 0) * 0.4;
+  }
+  if (role === "Defence") {
+    return (record.RB ?? 0) * 2 + (record.OP ?? 0) * 1.3 + (record.CM ?? 0) * 2 + (record.MK ?? 0) * 0.35 + (record.TK ?? 0) * 0.6;
+  }
+  return (record.DI ?? 0) + (record.CL ?? 0) * 3 + (record.CP ?? 0) * 1.2 + (record.UP ?? 0) * 0.4 + (record.IF ?? 0) * 0.8;
+}
+
+function inferRole(record) {
+  const roles = ["Offence", "Midfield", "Defence"];
+  return roles
+    .map((role) => ({ role, value: roleContribution(record, role) }))
+    .sort((a, b) => b.value - a.value)[0]?.role ?? "Midfield";
+}
+
+function leagueScoringEfficiency() {
+  const points = data.teamGames.reduce((sum, row) => sum + teamPoints(row), 0);
+  const inside50s = data.teamGames.reduce((sum, row) => sum + (row.IF ?? 0), 0);
+  return safeRatio(points, inside50s, 1);
+}
+
+function pavContext(team) {
+  const rows = data.teamGames.filter((row) => row.team === team);
+  const leagueRows = data.teamGames.filter((row) => row.IF);
+  const leaguePointsPerGame = avg(leagueRows.map((row) => ({ value: teamPoints(row) })), "value") ?? 0;
+  const leagueInside50sPerGame = avg(leagueRows, "IF") ?? 0;
+  const games = rows.length || 1;
+  const pointsFor = rows.reduce((sum, row) => sum + teamPoints(row), 0);
+  const inside50sFor = rows.reduce((sum, row) => sum + (row.IF ?? 0), 0);
+  const pointsAgainst = rows.reduce((sum, row) => sum + (Number.isFinite(row.againstPoints) ? row.againstPoints : leaguePointsPerGame), 0);
+  const inside50sAgainst = rows.reduce((sum, row) => sum + (Number.isFinite(row.againstIF) ? row.againstIF : leagueInside50sPerGame), 0);
+  const leagueEfficiency = leagueScoringEfficiency();
+  const offencePool = safeRatio(safeRatio(pointsFor, inside50sFor), leagueEfficiency, 1) * 100;
+  const midfieldPool = safeRatio(inside50sFor, inside50sAgainst || leagueInside50sPerGame * games, 1) * 100;
+  const defenceNumber = safeRatio(safeRatio(pointsAgainst, inside50sAgainst), leagueEfficiency, 1);
+  const defencePool = Math.max(0, 100 * ((2 * defenceNumber - defenceNumber ** 2) / (2 * defenceNumber || 1)) * 2);
+  const players = data.players.filter((row) => row.team === team);
+  const roleTotals = {
+    Offence: players.reduce((sum, record) => sum + roleContribution(record, "Offence"), 0),
+    Midfield: players.reduce((sum, record) => sum + roleContribution(record, "Midfield"), 0),
+    Defence: players.reduce((sum, record) => sum + roleContribution(record, "Defence"), 0),
+  };
+
+  return {
+    pools: { Offence: offencePool, Midfield: midfieldPool, Defence: defencePool },
+    roleTotals,
+  };
+}
+
+function playerPav(team, player, context) {
+  const record = seasonPlayerRecord(team, player);
+  const role = inferRole(record);
+  const share = safeRatio(roleContribution(record, role), context.roleTotals[role]);
+  return { role, value: share * context.pools[role] };
+}
+
 function playerRounds(team, player) {
   return data.playerGames
     .filter((row) => row.team === team && row.player === player)
@@ -308,12 +379,16 @@ function renderMovers(movers) {
 function renderTable(movers) {
   const tbody = document.querySelector("#playerTable");
   document.querySelector("#selectedStatHeader").textContent = data.statLabels[selectedStat];
+  const context = pavContext(selectedTeam);
   tbody.replaceChildren(
     ...movers.map((row) => {
+      const pav = playerPav(row.team, row.player, context);
       const tr = el("tr", {}, [
         el("td", { text: row.player }),
         el("td", { text: row.GM }),
         el("td", { text: fmt(row.current) }),
+        el("td", { text: pav.role }),
+        el("td", { text: fmt(pav.value) }),
         el("td", { text: `${row.change >= 0 ? "+" : ""}${fmt(row.change)}` }),
         el("td", {}, [el("span", { class: `pill ${row.direction}`, text: signalText(row.direction) })]),
       ]);
