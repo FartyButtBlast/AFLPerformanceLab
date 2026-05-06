@@ -51,3 +51,20 @@ The URL will look like:
 `https://YOUR-USER.github.io/YOUR-REPO/`
 
 After updating `auth-config.js`, commit and push the change. GitHub Actions will redeploy the site.
+
+## Analytics setup
+
+The app has optional Google Analytics support.
+
+1. Create a Google Analytics property for the site.
+2. Create a web data stream for your domain.
+3. Copy the Measurement ID. It looks like `G-XXXXXXXXXX`.
+4. Paste it into `analytics-config.js`:
+
+```js
+window.ANALYTICS_CONFIG = {
+  googleMeasurementId: "G-XXXXXXXXXX",
+};
+```
+
+The app tracks page views and simple product events such as login, registration request, password reset request, selected team, selected stat, selected player, and submitted questions. It does not send passwords, email addresses, or the full question text.

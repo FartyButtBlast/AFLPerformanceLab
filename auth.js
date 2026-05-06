@@ -134,6 +134,7 @@
       setMessage(error.message, "error");
       return;
     }
+    window.trackAppEvent?.("login_success");
     showApp(data.user);
   });
 
@@ -155,6 +156,7 @@
       setMessage("That email is already registered. Try logging in or resetting the password.", "error");
       return;
     }
+    window.trackAppEvent?.("registration_requested");
     setMessage("Account created. Check your email to confirm the registration.", "success");
     setMode("login");
   });
@@ -170,6 +172,7 @@
       setMessage(error.message, "error");
       return;
     }
+    window.trackAppEvent?.("password_reset_requested");
     setMessage("Password reset email sent.", "success");
   });
 
@@ -187,6 +190,7 @@
       setMessage(error.message, "error");
       return;
     }
+    window.trackAppEvent?.("password_updated");
     await supabase.auth.signOut();
     handlingPasswordRecovery = false;
     passwordRecoveryExpected = false;
@@ -200,6 +204,7 @@
 
   logoutButton.addEventListener("click", async () => {
     await supabase.auth.signOut();
+    window.trackAppEvent?.("logout");
     handlingPasswordRecovery = false;
     passwordRecoveryExpected = false;
     clearAuthUrlState();

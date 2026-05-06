@@ -393,21 +393,39 @@ function render() {
 
 teamSelect.addEventListener("change", () => {
   selectedPlayer = "";
+  window.trackAppEvent?.("team_selected", { team: teamSelect.value });
   render();
 });
-statSelect.addEventListener("change", render);
-compareSelect.addEventListener("change", render);
+statSelect.addEventListener("change", () => {
+  window.trackAppEvent?.("stat_selected", { stat: statSelect.value });
+  render();
+});
+compareSelect.addEventListener("change", () => {
+  window.trackAppEvent?.("comparison_changed", { comparison: compareSelect.value });
+  render();
+});
 playerSelect.addEventListener("change", () => {
   selectedPlayer = playerSelect.value;
+  window.trackAppEvent?.("player_selected", { team: selectedTeam });
   render();
 });
 askButton.addEventListener("click", () => {
   applyQuestionIntent();
+  window.trackAppEvent?.("question_submitted", {
+    team: selectedTeam,
+    stat: selectedStat,
+    question_length: questionInput.value.trim().length,
+  });
   render();
 });
 questionInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     applyQuestionIntent();
+    window.trackAppEvent?.("question_submitted", {
+      team: selectedTeam,
+      stat: selectedStat,
+      question_length: questionInput.value.trim().length,
+    });
     render();
   }
 });
