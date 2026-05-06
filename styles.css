@@ -31,10 +31,88 @@ select {
   font: inherit;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .app-shell {
   width: min(1480px, calc(100vw - 32px));
   margin: 0 auto;
   padding: 28px 0 40px;
+}
+
+.auth-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(245, 247, 244, 0.96);
+  backdrop-filter: blur(12px);
+}
+
+.auth-panel {
+  width: min(480px, 100%);
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.auth-panel h1 {
+  font-size: clamp(2rem, 7vw, 3.4rem);
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.auth-tab,
+.secondary-button {
+  min-height: 36px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 0 10px;
+}
+
+.auth-tab.active {
+  border-color: var(--accent);
+  background: #e9f6f3;
+  color: var(--accent-dark);
+}
+
+.auth-form {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-message,
+.auth-notice {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.auth-message[data-tone="error"],
+.auth-notice {
+  color: var(--red);
+}
+
+.auth-message[data-tone="success"] {
+  color: var(--accent-dark);
+}
+
+.auth-notice {
+  border: 1px solid #f1c6cc;
+  border-radius: 8px;
+  background: #fff5f6;
+  padding: 12px;
 }
 
 .topbar {
@@ -86,6 +164,10 @@ h2 {
   background: rgba(255, 255, 255, 0.72);
   color: inherit;
   text-decoration: none;
+}
+
+.source-note button {
+  font-size: 0.9rem;
 }
 
 .controls-band,

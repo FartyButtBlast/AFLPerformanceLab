@@ -33,3 +33,21 @@ node scripts/build-data.mjs
 ```
 
 Then open `index.html` or run a local server.
+
+## Login setup
+
+The app uses Supabase Auth for registration, login, and password reset.
+
+1. Create a project at `https://supabase.com`.
+2. In Supabase, open **Project Settings > API**.
+3. Copy the **Project URL** and **anon public key**.
+4. Paste them into `auth-config.js`.
+5. In Supabase, open **Authentication > URL Configuration**.
+6. Add your GitHub Pages URL as the **Site URL**.
+7. Add the same URL to **Redirect URLs**.
+
+The URL will look like:
+
+`https://YOUR-USER.github.io/YOUR-REPO/`
+
+After updating `auth-config.js`, commit and push the change. GitHub Actions will redeploy the site.

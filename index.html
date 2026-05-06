@@ -7,6 +7,59 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <section id="authGate" class="auth-gate" aria-live="polite">
+      <div class="auth-panel">
+        <div>
+          <p class="eyebrow">AFL Performance Lab</p>
+          <h1>Sign in</h1>
+        </div>
+
+        <div id="authSetupNotice" class="auth-notice" hidden>
+          Add your Supabase URL and anon key in <code>auth-config.js</code> to enable secure login.
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Authentication">
+          <button id="loginTab" class="auth-tab active" type="button">Login</button>
+          <button id="registerTab" class="auth-tab" type="button">Register</button>
+          <button id="resetTab" class="auth-tab" type="button">Reset password</button>
+        </div>
+
+        <form id="loginForm" class="auth-form">
+          <label>
+            Email
+            <input id="loginEmail" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="loginPassword" type="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">Login</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" hidden>
+          <label>
+            Email
+            <input id="registerEmail" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="registerPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <button type="submit">Create account</button>
+        </form>
+
+        <form id="resetForm" class="auth-form" hidden>
+          <label>
+            Email
+            <input id="resetEmail" type="email" autocomplete="email" required />
+          </label>
+          <button type="submit">Send reset link</button>
+        </form>
+
+        <p id="authMessage" class="auth-message"></p>
+      </div>
+    </section>
+
     <main class="app-shell">
       <header class="topbar">
         <div>
@@ -14,6 +67,8 @@
           <h1>Performance Lab</h1>
         </div>
         <div class="source-note">
+          <span id="userBadge" hidden></span>
+          <button id="logoutButton" class="secondary-button" type="button" hidden>Logout</button>
           <span id="seasonBadge">Loading data</span>
           <a href="https://afltables.com/afl/afl_index.html" target="_blank" rel="noreferrer">Source</a>
         </div>
@@ -140,6 +195,8 @@
       </section>
     </main>
 
+    <script src="./auth-config.js?v=auth-1"></script>
+    <script src="./auth.js?v=auth-1"></script>
     <script src="./data/afl-data.js?v=season-2026"></script>
     <script src="./app.js?v=season-2026"></script>
   </body>
