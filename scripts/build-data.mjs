@@ -111,10 +111,22 @@ const teamPositionSlugs = {
 };
 
 const positionRoles = {
+  "Full Forward": "Offense",
+  "Forward Pocket": "Offense",
+  "Centre Half-Forward": "Offense",
+  "Half-Forward Flank": "Offense",
+  Centre: "Midfield",
+  Wing: "Midfield",
+  Ruck: "Midfield",
+  Rover: "Midfield",
+  "Ruck Rover": "Midfield",
+  "Centre Half-Back": "Defence",
+  "Half-Back Flank": "Defence",
+  "Full Back": "Defence",
+  "Back Pocket": "Defence",
   Defender: "Defence",
   Midfielder: "Midfield",
-  Ruck: "Midfield",
-  Forward: "Offence",
+  Forward: "Offense",
 };
 
 function decodeEntities(value) {
@@ -248,7 +260,11 @@ function parsePositionRows(html, team) {
     .replace(/\s+/g, " ")
     .trim();
   const positions = [];
-  const pattern = /([A-Z][A-Za-z' .-]+?)\s+(Defender|Midfielder|Ruck|Forward)\s+\d+\s+[\d.]+\s+\$/g;
+  const positionPattern = Object.keys(positionRoles)
+    .sort((a, b) => b.length - a.length)
+    .map((position) => position.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join("|");
+  const pattern = new RegExp(`([A-Z][A-Za-z' .-]+?)\\s+(${positionPattern})\\s+\\d+\\s+[\\d.]+\\s+\\$`, "g");
   for (const match of text.matchAll(pattern)) {
     const player = match[1]
       .replace(/\bAFL\b|\bSuperCoach\b|\bPlayer\b|\bPosition\b|\bFantasy Stats\b/gi, "")

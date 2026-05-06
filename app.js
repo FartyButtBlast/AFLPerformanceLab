@@ -17,7 +17,26 @@ let selectedPlayer = "";
 let lastQuestion = "";
 
 const roleOverrides = {
-  "edwards, tom|essendon": "Offence",
+  "edwards, tom|essendon": "Offense",
+};
+
+const positionRoles = {
+  "Full Forward": "Offense",
+  "Forward Pocket": "Offense",
+  "Centre Half-Forward": "Offense",
+  "Half-Forward Flank": "Offense",
+  Centre: "Midfield",
+  Wing: "Midfield",
+  Ruck: "Midfield",
+  Rover: "Midfield",
+  "Ruck Rover": "Midfield",
+  "Centre Half-Back": "Defence",
+  "Half-Back Flank": "Defence",
+  "Full Back": "Defence",
+  "Back Pocket": "Defence",
+  Defender: "Defence",
+  Midfielder: "Midfield",
+  Forward: "Offense",
 };
 
 const statAliases = {
@@ -122,12 +141,13 @@ function seasonPlayerRecord(team, player) {
 function playerPositionRole(record) {
   const key = record?.playerKey;
   if (!key) return null;
-  return roleOverrides[key] ?? data.playerPositions?.find((row) => row.playerKey === key)?.role ?? null;
+  const listedPosition = data.playerPositions?.find((row) => row.playerKey === key);
+  return roleOverrides[key] ?? positionRoles[listedPosition?.position] ?? listedPosition?.role ?? null;
 }
 
 function roleContribution(record, role) {
   if (!record) return 0;
-  if (role === "Offence") {
+  if (role === "Offense") {
     return teamPoints(record) + (record.GA ?? 0) * 3 + (record.MI ?? 0) * 2 + (record.IF ?? 0) * 0.4;
   }
   if (role === "Defence") {
@@ -140,7 +160,7 @@ function inferRole(record) {
   const listedRole = playerPositionRole(record);
   if (listedRole) return listedRole;
 
-  const roles = ["Offence", "Midfield", "Defence"];
+  const roles = ["Offense", "Midfield", "Defence"];
   return roles
     .map((role) => ({ role, value: roleContribution(record, role) }))
     .sort((a, b) => b.value - a.value)[0]?.role ?? "Midfield";
@@ -169,7 +189,7 @@ function pavContext(team) {
   const defencePool = Math.max(0, 100 * ((2 * defenceNumber - defenceNumber ** 2) / (2 * defenceNumber || 1)) * 2);
   const players = data.players.filter((row) => row.team === team);
   const roleTotals = {
-    Offence: 0,
+    Offense: 0,
     Midfield: 0,
     Defence: 0,
   };
@@ -179,7 +199,7 @@ function pavContext(team) {
   });
 
   return {
-    pools: { Offence: offencePool, Midfield: midfieldPool, Defence: defencePool },
+    pools: { Offense: offencePool, Midfield: midfieldPool, Defence: defencePool },
     roleTotals,
   };
 }
