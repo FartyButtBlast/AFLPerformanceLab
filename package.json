@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node scripts/build-data.mjs",
+    "build": "node scripts/build-positions.mjs && node scripts/build-data.mjs",
+    "build:data": "node scripts/build-data.mjs",
+    "build:positions": "node scripts/build-positions.mjs",
     "start": "python3 -m http.server 4173 --bind 127.0.0.1"
   }
 }

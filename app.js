@@ -41,9 +41,14 @@ const positionRoles = {
   Midfielder: "Midfield",
 };
 
+function normalisePlayerKey(key) {
+  return key.replace(/[^a-z0-9|]/g, "");
+}
+
 const manualPlayerPositions = (window.PLAYER_POSITIONS ?? []).map((row) => ({
   ...row,
   playerKey: `${row.player.toLowerCase()}|${row.team.toLowerCase()}`,
+  normalisedKey: normalisePlayerKey(`${row.player.toLowerCase()}|${row.team.toLowerCase()}`),
 }));
 
 const statAliases = {
@@ -154,8 +159,9 @@ function playerPositionRole(record) {
 function playerPosition(record) {
   const key = record?.playerKey;
   if (!key) return null;
-  const manualPosition = manualPlayerPositions.find((row) => row.playerKey === key)?.position;
-  const listedPosition = data.playerPositions?.find((row) => row.playerKey === key)?.position;
+  const normalisedKey = normalisePlayerKey(key);
+  const manualPosition = manualPlayerPositions.find((row) => row.playerKey === key || row.normalisedKey === normalisedKey)?.position;
+  const listedPosition = data.playerPositions?.find((row) => row.playerKey === key || normalisePlayerKey(row.playerKey) === normalisedKey)?.position;
   return manualPosition ?? listedPosition ?? null;
 }
 
