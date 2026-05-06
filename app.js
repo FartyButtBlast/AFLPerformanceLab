@@ -34,10 +34,17 @@ const positionRoles = {
   "Half-Back Flank": "Defence",
   "Full Back": "Defence",
   "Back Pocket": "Defence",
+  "Key Forward": "Offense",
+  Forward: "Offense",
+  "Key Defender": "Defence",
   Defender: "Defence",
   Midfielder: "Midfield",
-  Forward: "Offense",
 };
+
+const manualPlayerPositions = (window.PLAYER_POSITIONS ?? []).map((row) => ({
+  ...row,
+  playerKey: `${row.player.toLowerCase()}|${row.team.toLowerCase()}`,
+}));
 
 const statAliases = {
   goals: "GL",
@@ -139,10 +146,17 @@ function seasonPlayerRecord(team, player) {
 }
 
 function playerPositionRole(record) {
+  const position = playerPosition(record);
+  if (!position) return null;
+  return roleOverrides[record.playerKey] ?? positionRoles[position] ?? null;
+}
+
+function playerPosition(record) {
   const key = record?.playerKey;
   if (!key) return null;
-  const listedPosition = data.playerPositions?.find((row) => row.playerKey === key);
-  return roleOverrides[key] ?? positionRoles[listedPosition?.position] ?? listedPosition?.role ?? null;
+  const manualPosition = manualPlayerPositions.find((row) => row.playerKey === key)?.position;
+  const listedPosition = data.playerPositions?.find((row) => row.playerKey === key)?.position;
+  return manualPosition ?? listedPosition ?? null;
 }
 
 function roleContribution(record, role) {
@@ -419,9 +433,12 @@ function renderTable(movers) {
   const context = pavContext(selectedTeam);
   tbody.replaceChildren(
     ...movers.map((row) => {
+      const record = seasonPlayerRecord(row.team, row.player);
+      const position = playerPosition(record);
       const pav = playerPav(row.team, row.player, context);
       const tr = el("tr", {}, [
         el("td", { text: row.player }),
+        el("td", { text: position ?? "Inferred" }),
         el("td", { text: row.GM }),
         el("td", { text: fmt(row.current) }),
         el("td", { text: pav.role }),
