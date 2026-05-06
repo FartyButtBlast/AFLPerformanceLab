@@ -1,0 +1,35 @@
+# Deploying AFL Performance Lab
+
+This is a static site. GitHub Pages can host it and GitHub Actions can refresh the AFL Tables data automatically.
+
+## One-time setup
+
+1. Create a GitHub repository and push this folder to the `main` branch.
+2. In GitHub, open the repository settings.
+3. Go to **Pages**.
+4. Set **Build and deployment** to **GitHub Actions**.
+5. Open the **Actions** tab and run **Build and deploy AFL dashboard** once.
+
+GitHub will publish the site at a URL like:
+
+`https://YOUR-USER.github.io/YOUR-REPO/`
+
+## Automatic updates
+
+The workflow in `.github/workflows/deploy-pages.yml` runs:
+
+- whenever you push to `main`
+- whenever you trigger it manually
+- every two hours, so it picks up new AFL Tables data soon after games are updated
+
+AFL Tables does not provide a webhook when a match finishes, so the automatic build works by polling on a schedule. Each run downloads the latest 2026 AFL Tables data, rebuilds `data/afl-data.js`, and deploys the refreshed site.
+
+## Local update
+
+To refresh data locally:
+
+```bash
+node scripts/build-data.mjs
+```
+
+Then open `index.html` or run a local server.

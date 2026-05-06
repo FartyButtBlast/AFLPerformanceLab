@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AFL Performance Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">AFL Tables analytics</p>
+          <h1>Performance Lab</h1>
+        </div>
+        <div class="source-note">
+          <span id="seasonBadge">Loading data</span>
+          <a href="https://afltables.com/afl/afl_index.html" target="_blank" rel="noreferrer">Source</a>
+        </div>
+      </header>
+
+      <section class="controls-band">
+        <label>
+          Team
+          <select id="teamSelect"></select>
+        </label>
+        <label>
+          Stat
+          <select id="statSelect"></select>
+        </label>
+        <label>
+          Compare
+          <select id="compareSelect">
+            <option value="recent">Last three games vs earlier games</option>
+            <option value="lastGame">Last game vs previous three</option>
+            <option value="halves">Second half of season vs first half</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="question-band">
+        <label for="questionInput">Ask a question</label>
+        <div class="ask-row">
+          <input
+            id="questionInput"
+            placeholder="Try: who is improving at Carlton in clearances, or which teams are down in goals?"
+          />
+          <button id="askButton" type="button">Ask</button>
+        </div>
+        <p id="answerText" class="answer-text"></p>
+      </section>
+
+      <section class="summary-grid">
+        <article class="metric-panel">
+          <span>Team direction</span>
+          <strong id="teamDirection">-</strong>
+          <small id="teamDirectionDetail">-</small>
+        </article>
+        <article class="metric-panel">
+          <span>Improvers</span>
+          <strong id="improverCount">-</strong>
+          <small>Players above the trend threshold</small>
+        </article>
+        <article class="metric-panel">
+          <span>Watchlist</span>
+          <strong id="declinerCount">-</strong>
+          <small>Players moving backwards on the selected stat</small>
+        </article>
+        <article class="metric-panel">
+          <span>Team stat rank</span>
+          <strong id="teamRank">-</strong>
+          <small id="teamRankDetail">-</small>
+        </article>
+      </section>
+
+      <section class="analysis-layout">
+        <article class="panel wide">
+          <div class="panel-head">
+            <div>
+              <h2>Team Rollup</h2>
+              <p id="rollupCaption">Per-game trend across seasons.</p>
+            </div>
+          </div>
+          <div id="teamTrendChart" class="chart"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>League Context</h2>
+              <p>Latest per-game ranking by selected stat.</p>
+            </div>
+          </div>
+          <div id="leagueChart" class="chart compact"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Player Movers</h2>
+              <p>Improving and declining players in the current team.</p>
+            </div>
+          </div>
+          <div id="moversList" class="movers-list"></div>
+        </article>
+
+        <article class="panel wide">
+          <div class="panel-head">
+            <div>
+              <h2>Player Detail</h2>
+              <p>Click a player to inspect yearly stat movement.</p>
+            </div>
+            <select id="playerSelect"></select>
+          </div>
+          <div id="playerChart" class="chart"></div>
+        </article>
+
+        <article class="panel table-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Stat Table</h2>
+              <p>Latest season player snapshot with trend signals.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Player</th>
+                  <th>Games</th>
+                  <th id="selectedStatHeader">Stat</th>
+                  <th>Trend</th>
+                  <th>Signal</th>
+                </tr>
+              </thead>
+              <tbody id="playerTable"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./data/afl-data.js?v=season-2026"></script>
+    <script src="./app.js?v=season-2026"></script>
+  </body>
+</html>
