@@ -16,9 +16,11 @@
     login: document.querySelector("#loginForm"),
     register: document.querySelector("#registerForm"),
     reset: document.querySelector("#resetForm"),
+    newPassword: document.querySelector("#newPasswordForm"),
   };
 
   let supabase = null;
+  let handlingPasswordRecovery = false;
 
   function setMessage(text, tone = "") {
     message.textContent = text;
@@ -47,9 +49,30 @@
     userBadge.textContent = "";
   }
 
+  function showPasswordResetForm() {
+    handlingPasswordRecovery = true;
+    showAuth();
+    setMode("newPassword");
+    setMessage("Enter a new password to finish resetting your account.", "success");
+  }
+
   async function loadSupabase() {
     const module = await import("https://esm.sh/@supabase/supabase-js@2");
     return module.createClient(config.supabaseUrl, config.supabaseAnonKey);
+  }
+
+  function authRedirectUrl() {
+    return config.redirectUrl || window.location.origin + window.location.pathname;
+  }
+
+  function isPasswordRecoveryUrl() {
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+    const searchParams = new URLSearchParams(window.location.search);
+    return hashParams.get("type") === "recovery" || searchParams.get("type") === "recovery";
+  }
+
+  function clearAuthUrlState() {
+    window.history.replaceState({}, document.title, window.location.pathname);
   }
 
   tabs.login.addEventListener("click", () => setMode("login"));
@@ -91,7 +114,10 @@
   try {
     supabase = await loadSupabase();
     const { data } = await supabase.auth.getSession();
-    if (data.session?.user) showApp(data.session.user);
+    if (data.session?.user) {
+      if (isPasswordRecoveryUrl()) showPasswordResetForm();
+      else showApp(data.session.user);
+    }
   } catch (error) {
     setupNotice.hidden = false;
     setMessage(`Could not load authentication: ${error.message}`, "error");
@@ -119,7 +145,7 @@
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
-      options: { emailRedirectTo: window.location.origin + window.location.pathname },
+      options: { emailRedirectTo: authRedirectUrl() },
     });
     if (error) {
       setMessage(error.message, "error");
@@ -138,7 +164,7 @@
     setMessage("Sending reset link...");
     const email = document.querySelector("#resetEmail").value;
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + window.location.pathname,
+      redirectTo: authRedirectUrl(),
     });
     if (error) {
       setMessage(error.message, "error");
@@ -147,14 +173,44 @@
     setMessage("Password reset email sent.", "success");
   });
 
+  forms.newPassword.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const newPassword = document.querySelector("#newPassword").value;
+    const confirmNewPassword = document.querySelector("#confirmNewPassword").value;
+    if (newPassword !== confirmNewPassword) {
+      setMessage("The passwords do not match.", "error");
+      return;
+    }
+    setMessage("Updating password...");
+    const { error } = await supabase.auth.updateUser({ password: newPassword });
+    if (error) {
+      setMessage(error.message, "error");
+      return;
+    }
+    await supabase.auth.signOut();
+    handlingPasswordRecovery = false;
+    clearAuthUrlState();
+    document.querySelector("#newPassword").value = "";
+    document.querySelector("#confirmNewPassword").value = "";
+    showAuth();
+    setMode("login");
+    setMessage("Password updated. Please log in with the new password.", "success");
+  });
+
   logoutButton.addEventListener("click", async () => {
     await supabase.auth.signOut();
+    handlingPasswordRecovery = false;
+    clearAuthUrlState();
     showAuth();
     setMode("login");
   });
 
-  supabase.auth.onAuthStateChange((_event, session) => {
-    if (session?.user) showApp(session.user);
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "PASSWORD_RECOVERY" || (session?.user && isPasswordRecoveryUrl())) {
+      showPasswordResetForm();
+      return;
+    }
+    if (session?.user && !handlingPasswordRecovery) showApp(session.user);
     else showAuth();
   });
 })();

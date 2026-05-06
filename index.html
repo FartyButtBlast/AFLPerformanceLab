@@ -56,6 +56,18 @@
           <button type="submit">Send reset link</button>
         </form>
 
+        <form id="newPasswordForm" class="auth-form" hidden>
+          <label>
+            New password
+            <input id="newPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <label>
+            Confirm new password
+            <input id="confirmNewPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <button type="submit">Update password</button>
+        </form>
+
         <p id="authMessage" class="auth-message"></p>
       </div>
     </section>
@@ -195,8 +207,8 @@
       </section>
     </main>
 
-    <script src="./auth-config.js?v=auth-1"></script>
-    <script src="./auth.js?v=auth-1"></script>
+    <script src="./auth-config.js?v=auth-2"></script>
+    <script src="./auth.js?v=auth-2"></script>
     <script src="./data/afl-data.js?v=season-2026"></script>
     <script src="./app.js?v=season-2026"></script>
   </body>
