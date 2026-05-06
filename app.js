@@ -162,7 +162,31 @@ function playerPosition(record) {
   const normalisedKey = normalisePlayerKey(key);
   const manualPosition = manualPlayerPositions.find((row) => row.playerKey === key || row.normalisedKey === normalisedKey)?.position;
   const listedPosition = data.playerPositions?.find((row) => row.playerKey === key || normalisePlayerKey(row.playerKey) === normalisedKey)?.position;
-  return manualPosition ?? listedPosition ?? null;
+  return manualPosition ?? listedPosition ?? estimatePosition(record);
+}
+
+function perGame(record, stat) {
+  return safeRatio(record?.[stat] ?? 0, record?.GM ?? 0);
+}
+
+function estimatePosition(record) {
+  if (!record) return "Midfielder";
+  const goals = perGame(record, "GL");
+  const hitouts = perGame(record, "HO");
+  const rebound50s = perGame(record, "RB");
+  const onePercenters = perGame(record, "OP");
+  const clearances = perGame(record, "CL");
+  const marksInside50 = perGame(record, "MI");
+  const contestedMarks = perGame(record, "CM");
+  const disposals = perGame(record, "DI");
+
+  if (hitouts >= 8) return "Ruck";
+  if (goals >= 1.1 || marksInside50 >= 1.2 || (goals >= 0.7 && contestedMarks >= 0.7)) return "Key Forward";
+  if (goals >= 0.35 || marksInside50 >= 0.45 || perGame(record, "GA") >= 0.45) return "Forward";
+  if (rebound50s >= 3.2 || onePercenters >= 5.5) return "Key Defender";
+  if (rebound50s >= 1.7 || (onePercenters >= 3 && clearances < 1.5)) return "Defender";
+  if (clearances >= 2 || disposals >= 17) return "Midfielder";
+  return "Forward";
 }
 
 function roleContribution(record, role) {
