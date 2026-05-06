@@ -1,5 +1,4 @@
 window.AFL_DATA = {
-  "source": "https://afltables.com/afl/afl_index.html",
   "fetchedAt": "2026-05-06T03:24:37.919Z",
   "season": 2026,
   "years": [

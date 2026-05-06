@@ -279,7 +279,6 @@ await writeFile(
   OUT_FILE,
   `window.AFL_DATA = ${JSON.stringify(
     {
-      source: "https://afltables.com/afl/afl_index.html",
       fetchedAt,
       season: SEASON,
       years: [SEASON],

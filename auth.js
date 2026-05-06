@@ -21,6 +21,7 @@
 
   let supabase = null;
   let handlingPasswordRecovery = false;
+  let passwordRecoveryExpected = isPasswordRecoveryUrl();
 
   function setMessage(text, tone = "") {
     message.textContent = text;
@@ -51,6 +52,7 @@
 
   function showPasswordResetForm() {
     handlingPasswordRecovery = true;
+    passwordRecoveryExpected = true;
     showAuth();
     setMode("newPassword");
     setMessage("Enter a new password to finish resetting your account.", "success");
@@ -114,10 +116,8 @@
   try {
     supabase = await loadSupabase();
     const { data } = await supabase.auth.getSession();
-    if (data.session?.user) {
-      if (isPasswordRecoveryUrl()) showPasswordResetForm();
-      else showApp(data.session.user);
-    }
+    if (passwordRecoveryExpected) showPasswordResetForm();
+    else if (data.session?.user) showApp(data.session.user);
   } catch (error) {
     setupNotice.hidden = false;
     setMessage(`Could not load authentication: ${error.message}`, "error");
@@ -189,6 +189,7 @@
     }
     await supabase.auth.signOut();
     handlingPasswordRecovery = false;
+    passwordRecoveryExpected = false;
     clearAuthUrlState();
     document.querySelector("#newPassword").value = "";
     document.querySelector("#confirmNewPassword").value = "";
@@ -200,13 +201,14 @@
   logoutButton.addEventListener("click", async () => {
     await supabase.auth.signOut();
     handlingPasswordRecovery = false;
+    passwordRecoveryExpected = false;
     clearAuthUrlState();
     showAuth();
     setMode("login");
   });
 
   supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "PASSWORD_RECOVERY" || (session?.user && isPasswordRecoveryUrl())) {
+    if (event === "PASSWORD_RECOVERY" || passwordRecoveryExpected) {
       showPasswordResetForm();
       return;
     }

@@ -1,6 +1,6 @@
 # Deploying AFL Performance Lab
 
-This is a static site. GitHub Pages can host it and GitHub Actions can refresh the AFL Tables data automatically.
+This is a static site. GitHub Pages can host it and GitHub Actions can refresh the season data automatically.
 
 ## One-time setup
 
@@ -20,9 +20,9 @@ The workflow in `.github/workflows/deploy-pages.yml` runs:
 
 - whenever you push to `main`
 - whenever you trigger it manually
-- every two hours, so it picks up new AFL Tables data soon after games are updated
+- every two hours, so it picks up new season data soon after games are updated
 
-AFL Tables does not provide a webhook when a match finishes, so the automatic build works by polling on a schedule. Each run downloads the latest 2026 AFL Tables data, rebuilds `data/afl-data.js`, and deploys the refreshed site.
+The automatic build works by polling on a schedule. Each run downloads the latest 2026 season data, rebuilds `data/afl-data.js`, and deploys the refreshed site.
 
 ## Local update
 
