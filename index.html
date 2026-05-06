@@ -174,14 +174,12 @@
           <div class="panel-head">
             <div>
               <h2>Player Detail</h2>
-              <p>Click a player to inspect stat and PAV movement by round.</p>
+              <p>Click a player to inspect selected stat movement by round.</p>
             </div>
             <select id="playerSelect"></select>
           </div>
           <p id="playerChartCaption" class="chart-caption">Selected stat by round</p>
           <div id="playerChart" class="chart"></div>
-          <p class="chart-caption">PAV by round</p>
-          <div id="playerPavChart" class="chart"></div>
         </article>
 
         <article class="panel table-panel">
@@ -196,9 +194,6 @@
               <thead>
                 <tr>
                   <th>Player</th>
-                  <th>Position</th>
-                  <th>Games</th>
-                  <th id="selectedStatHeader">Stat</th>
                   <th>Role</th>
                   <th>PAV</th>
                   <th>Trend</th>
@@ -209,6 +204,16 @@
             </table>
           </div>
         </article>
+
+        <article class="panel pav-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Player PAV</h2>
+              <p id="playerPavCaption">PAV by round.</p>
+            </div>
+          </div>
+          <div id="playerPavChart" class="chart"></div>
+        </article>
       </section>
     </main>
 
@@ -218,6 +223,6 @@
     <script src="./auth.js?v=auth-3"></script>
     <script src="./data/afl-data.js?v=season-2026"></script>
     <script src="./data/player-positions.js?v=positions-2"></script>
-    <script src="./app.js?v=positions-1"></script>
+    <script src="./app.js?v=layout-2"></script>
   </body>
 </html>

@@ -485,18 +485,12 @@ function renderMovers(movers) {
 
 function renderTable(movers) {
   const tbody = document.querySelector("#playerTable");
-  document.querySelector("#selectedStatHeader").textContent = data.statLabels[selectedStat];
   const context = pavContext(selectedTeam);
   tbody.replaceChildren(
     ...movers.map((row) => {
-      const record = seasonPlayerRecord(row.team, row.player);
-      const position = playerPosition(record);
       const pav = playerPav(row.team, row.player, context);
       const tr = el("tr", {}, [
         el("td", { text: row.player }),
-        el("td", { text: position ?? "Inferred" }),
-        el("td", { text: row.GM }),
-        el("td", { text: fmt(row.current) }),
         el("td", { text: pav.role }),
         el("td", { text: fmt(pav.value) }),
         el("td", { text: `${row.change >= 0 ? "+" : ""}${fmt(row.change)}` }),
@@ -573,6 +567,7 @@ function render() {
   document.querySelector("#playerChartCaption").textContent = `${selectedPlayer || "Player"} ${data.statLabels[selectedStat]} by round`;
   svgLineChart(document.querySelector("#playerChart"), playerPoints.length ? playerPoints : [{ round: 1, value: 0 }]);
   const playerPavPoints = playerPavByRound(selectedTeam, selectedPlayer);
+  document.querySelector("#playerPavCaption").textContent = `${selectedPlayer || "Player"} PAV by round`;
   svgLineChart(document.querySelector("#playerPavChart"), playerPavPoints.length ? playerPavPoints : [{ round: 1, value: 0 }]);
   document.querySelector("#rollupCaption").textContent = `${selectedTeam} ${data.statLabels[selectedStat]} by round, ${season}.`;
   document.querySelector("#seasonBadge").textContent = `${season} season only, fetched ${new Date(data.fetchedAt).toLocaleDateString()}`;

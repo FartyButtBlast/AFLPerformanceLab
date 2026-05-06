@@ -277,8 +277,7 @@ button {
   padding: 16px;
 }
 
-.panel.wide,
-.table-panel {
+.panel.wide {
   grid-column: span 1;
 }
 
@@ -295,7 +294,7 @@ button {
 }
 
 .chart {
-  min-height: 300px;
+  min-height: 260px;
 }
 
 .chart-caption {
@@ -382,8 +381,9 @@ svg {
   background: var(--muted);
 }
 
-.table-panel {
-  grid-column: 1 / -1;
+.table-panel,
+.pav-panel {
+  align-self: start;
 }
 
 .table-wrap {
