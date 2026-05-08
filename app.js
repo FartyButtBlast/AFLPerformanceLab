@@ -19,6 +19,7 @@ const allPlayerImprovingFilter = document.querySelector("#allPlayerImprovingFilt
 const allPlayerList = document.querySelector("#allPlayerList");
 const allPlayerListSummary = document.querySelector("#allPlayerListSummary");
 const openCompareButton = document.querySelector("#openCompareButton");
+const clearCompareSelectionButton = document.querySelector("#clearCompareSelectionButton");
 const backToPlayerListButton = document.querySelector("#backToPlayerListButton");
 const compareStatSelect = document.querySelector("#compareStatSelect");
 const selectedCompareSummary = document.querySelector("#selectedCompareSummary");
@@ -708,6 +709,7 @@ function renderPlayerComparisonList() {
   allPlayerListSummary.textContent = `${rows.length} players shown, ${selectedComparePlayers.size} selected.`;
   openCompareButton.disabled = selectedComparePlayers.size < 2;
   openCompareButton.textContent = selectedComparePlayers.size < 2 ? "Select 2+ players" : "Compare selected";
+  clearCompareSelectionButton.disabled = selectedComparePlayers.size === 0;
   allPlayerList.replaceChildren(
     ...rows.map((row) => {
       const checkbox = el("input", { type: "checkbox" });
@@ -724,6 +726,11 @@ function renderPlayerComparisonList() {
       ]);
     }),
   );
+}
+
+function clearCompareSelection() {
+  selectedComparePlayers.clear();
+  renderPlayerComparisonList();
 }
 
 function openPlayerCompareResults() {
@@ -821,6 +828,7 @@ allPlayerTeamFilter.addEventListener("change", renderPlayerComparisonList);
 allPlayerPositionFilter.addEventListener("change", renderPlayerComparisonList);
 allPlayerImprovingFilter.addEventListener("change", renderPlayerComparisonList);
 openCompareButton.addEventListener("click", openPlayerCompareResults);
+clearCompareSelectionButton.addEventListener("click", clearCompareSelection);
 backToPlayerListButton.addEventListener("click", backToPlayerComparisonList);
 compareStatSelect.addEventListener("change", () => {
   renderPlayerCompareResults();

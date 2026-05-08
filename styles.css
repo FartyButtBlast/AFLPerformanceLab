@@ -449,6 +449,13 @@ button:disabled {
   width: min(340px, 44vw);
 }
 
+.panel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
 .chart {
   min-height: 260px;
 }
