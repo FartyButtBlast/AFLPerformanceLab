@@ -7,6 +7,23 @@ const compareSelect = document.querySelector("#compareSelect");
 const playerSelect = document.querySelector("#playerSelect");
 const questionInput = document.querySelector("#questionInput");
 const askButton = document.querySelector("#askButton");
+const teamView = document.querySelector("#teamView");
+const playerCompareView = document.querySelector("#playerCompareView");
+const teamViewButton = document.querySelector("#teamViewButton");
+const playerCompareViewButton = document.querySelector("#playerCompareViewButton");
+const playerCompareSetup = document.querySelector("#playerCompareSetup");
+const playerCompareResults = document.querySelector("#playerCompareResults");
+const allPlayerTeamFilter = document.querySelector("#allPlayerTeamFilter");
+const allPlayerPositionFilter = document.querySelector("#allPlayerPositionFilter");
+const allPlayerImprovingFilter = document.querySelector("#allPlayerImprovingFilter");
+const allPlayerList = document.querySelector("#allPlayerList");
+const allPlayerListSummary = document.querySelector("#allPlayerListSummary");
+const openCompareButton = document.querySelector("#openCompareButton");
+const backToPlayerListButton = document.querySelector("#backToPlayerListButton");
+const compareStatSelect = document.querySelector("#compareStatSelect");
+const selectedCompareSummary = document.querySelector("#selectedCompareSummary");
+const selectedPlayerChips = document.querySelector("#selectedPlayerChips");
+const playerCompareChart = document.querySelector("#playerCompareChart");
 
 const positiveStats = ["INDEX", "KI", "MK", "HB", "DI", "DA", "GL", "HO", "TK", "RB", "IF", "CL", "CP", "UP", "CM", "MI", "OP", "BO", "GA"];
 const lowerIsBetter = ["CG", "FA"];
@@ -15,6 +32,8 @@ let selectedTeam = "Collingwood";
 let selectedStat = defaultStat;
 let selectedPlayer = "";
 let lastQuestion = "";
+let activeView = "team";
+const selectedComparePlayers = new Set();
 
 const roleOverrides = {
   "edwards, tom|essendon": "Offense",
@@ -281,6 +300,44 @@ function playerPavByRound(team, player) {
   });
 }
 
+function comparePlayerKey(team, player) {
+  return `${team}|${player}`;
+}
+
+function comparePlayerFromKey(key) {
+  const [team, ...playerParts] = key.split("|");
+  return { team, player: playerParts.join("|") };
+}
+
+function playerSeasonRows() {
+  return data.players
+    .map((record) => {
+      const position = playerPosition(record);
+      const role = inferRole(record);
+      const games = playerRounds(record.team, record.player);
+      const trend = playerTrend(record.team, record.player, "INDEX");
+      return {
+        key: comparePlayerKey(record.team, record.player),
+        player: record.player,
+        team: record.team,
+        position,
+        role,
+        improving: trend.direction === "up",
+        games: games.length,
+      };
+    })
+    .sort((a, b) => a.team.localeCompare(b.team) || a.player.localeCompare(b.player));
+}
+
+function playerTrend(team, player, stat) {
+  const games = playerRounds(team, player);
+  const split = splitForComparison(games, "recent");
+  const recent = avg(split.recent, stat);
+  const baseline = avg(split.baseline, stat);
+  const change = baseline === null || recent === null ? 0 : recent - baseline;
+  return { change, direction: baseline === null || recent === null ? "flat" : changeDirection(stat, change) };
+}
+
 function playerRounds(team, player) {
   return data.playerGames
     .filter((row) => row.team === team && row.player === player)
@@ -389,6 +446,54 @@ function svgLineChart(container, points, options = {}) {
   container.append(svg);
 }
 
+function svgMultiLineChart(container, series, options = {}) {
+  container.innerHTML = "";
+  if (!series.length) {
+    container.append(el("p", { class: "empty-state", text: "Select players to compare." }));
+    return;
+  }
+
+  const width = container.clientWidth || 900;
+  const height = options.height || 420;
+  const pad = { top: 18, right: 28, bottom: 42, left: 48 };
+  const allPoints = series.flatMap((item) => item.points);
+  if (!allPoints.length) {
+    container.append(el("p", { class: "empty-state", text: "No round data is available for the selected players." }));
+    return;
+  }
+
+  const min = Math.min(...allPoints.map((point) => point.value), 0);
+  const max = Math.max(...allPoints.map((point) => point.value), 1);
+  const span = max - min || 1;
+  const minRound = Math.min(...allPoints.map((point) => point.round));
+  const maxRound = Math.max(...allPoints.map((point) => point.round));
+  const colors = ["#007c74", "#315da8", "#b46a00", "#b7394a", "#5f5aa2", "#287a3e", "#8a4d1f", "#4f6f74"];
+  const x = (round) => pad.left + ((round - minRound) / Math.max(maxRound - minRound, 1)) * (width - pad.left - pad.right);
+  const y = (value) => pad.top + (1 - (value - min) / span) * (height - pad.top - pad.bottom);
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+  [0, 0.25, 0.5, 0.75, 1].forEach((tick) => {
+    const yy = pad.top + tick * (height - pad.top - pad.bottom);
+    svg.append(svgNode("line", { x1: pad.left, x2: width - pad.right, y1: yy, y2: yy, class: "grid-line" }));
+    svg.append(svgNode("text", { x: 8, y: yy + 4, class: "axis" }, fmt(max - tick * span)));
+  });
+
+  for (let round = minRound; round <= maxRound; round += 1) {
+    svg.append(svgNode("text", { x: x(round) - 9, y: height - 12, class: "axis" }, `R${round}`));
+  }
+
+  series.forEach((item, index) => {
+    const color = colors[index % colors.length];
+    const d = item.points.map((point, pointIndex) => `${pointIndex ? "L" : "M"} ${x(point.round)} ${y(point.value)}`).join(" ");
+    svg.append(svgNode("path", { d, fill: "none", stroke: color, "stroke-width": 3 }));
+    item.points.forEach((point) => {
+      svg.append(svgNode("circle", { cx: x(point.round), cy: y(point.value), r: 4, fill: color }));
+    });
+  });
+  container.append(svg);
+}
+
 function svgBarChart(container, bars, options = {}) {
   container.innerHTML = "";
   const width = container.clientWidth || 520;
@@ -428,6 +533,15 @@ function populateControls() {
     .map(([key, label]) => el("option", { value: key, text: label }));
   statSelect.replaceChildren(...options);
   statSelect.value = selectedStat;
+  compareStatSelect.replaceChildren(...options.map((option) => option.cloneNode(true)));
+  compareStatSelect.value = selectedStat;
+
+  allPlayerTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }), ...teams.map((team) => el("option", { value: team, text: team })));
+  const positions = [...new Set(playerSeasonRows().map((row) => row.position))].sort();
+  allPlayerPositionFilter.replaceChildren(
+    el("option", { value: "all", text: "All positions" }),
+    ...positions.map((position) => el("option", { value: position, text: position })),
+  );
 }
 
 function updatePlayerSelect(players) {
@@ -553,6 +667,80 @@ function applyQuestionIntent() {
   }
 }
 
+function setActiveView(view) {
+  activeView = view;
+  teamView.hidden = view !== "team";
+  playerCompareView.hidden = view !== "players";
+  teamViewButton.classList.toggle("active", view === "team");
+  playerCompareViewButton.classList.toggle("active", view === "players");
+  if (view === "players") renderPlayerComparisonList();
+}
+
+function filteredPlayerRows() {
+  const team = allPlayerTeamFilter.value;
+  const position = allPlayerPositionFilter.value;
+  const improvingOnly = allPlayerImprovingFilter.checked;
+  return playerSeasonRows().filter((row) => {
+    if (team !== "all" && row.team !== team) return false;
+    if (position !== "all" && row.position !== position) return false;
+    if (improvingOnly && !row.improving) return false;
+    return true;
+  });
+}
+
+function renderPlayerComparisonList() {
+  const rows = filteredPlayerRows();
+  allPlayerListSummary.textContent = `${rows.length} players shown, ${selectedComparePlayers.size} selected.`;
+  openCompareButton.disabled = selectedComparePlayers.size < 1;
+  allPlayerList.replaceChildren(
+    ...rows.map((row) => {
+      const checkbox = el("input", { type: "checkbox" });
+      checkbox.checked = selectedComparePlayers.has(row.key);
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) selectedComparePlayers.add(row.key);
+        else selectedComparePlayers.delete(row.key);
+        renderPlayerComparisonList();
+      });
+      return el("label", { class: "player-check-row" }, [
+        checkbox,
+        el("span", { class: "player-check-name", text: row.player }),
+        el("span", { text: row.team }),
+        el("span", { text: row.position }),
+      ]);
+    }),
+  );
+}
+
+function openPlayerCompareResults() {
+  if (!selectedComparePlayers.size) return;
+  playerCompareSetup.hidden = true;
+  playerCompareResults.hidden = false;
+  renderPlayerCompareResults();
+  window.trackAppEvent?.("player_compare_opened", { player_count: selectedComparePlayers.size });
+}
+
+function renderPlayerCompareResults() {
+  const selected = [...selectedComparePlayers].map(comparePlayerFromKey);
+  const stat = compareStatSelect.value;
+  selectedCompareSummary.textContent = `${selected.length} selected players, ${data.statLabels[stat]} by round.`;
+  selectedPlayerChips.replaceChildren(
+    ...selected.map(({ team, player }) =>
+      el("span", { class: "selected-player-chip", text: `${player} (${team})` }),
+    ),
+  );
+  const series = selected.map(({ team, player }) => ({
+    label: `${player} (${team})`,
+    points: playerRounds(team, player).map((row) => ({ round: row.round, value: statValue(row, stat) })),
+  }));
+  svgMultiLineChart(playerCompareChart, series, { height: 440 });
+}
+
+function backToPlayerComparisonList() {
+  playerCompareResults.hidden = true;
+  playerCompareSetup.hidden = false;
+  renderPlayerComparisonList();
+}
+
 function render() {
   selectedTeam = teamSelect.value;
   selectedStat = statSelect.value;
@@ -612,6 +800,18 @@ questionInput.addEventListener("keydown", (event) => {
     render();
   }
 });
+teamViewButton.addEventListener("click", () => setActiveView("team"));
+playerCompareViewButton.addEventListener("click", () => setActiveView("players"));
+allPlayerTeamFilter.addEventListener("change", renderPlayerComparisonList);
+allPlayerPositionFilter.addEventListener("change", renderPlayerComparisonList);
+allPlayerImprovingFilter.addEventListener("change", renderPlayerComparisonList);
+openCompareButton.addEventListener("click", openPlayerCompareResults);
+backToPlayerListButton.addEventListener("click", backToPlayerComparisonList);
+compareStatSelect.addEventListener("change", () => {
+  renderPlayerCompareResults();
+  window.trackAppEvent?.("player_compare_stat_selected", { stat: compareStatSelect.value });
+});
 
 populateControls();
 render();
+renderPlayerComparisonList();

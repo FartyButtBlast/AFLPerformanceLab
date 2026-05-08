@@ -173,8 +173,30 @@ h2 {
 .controls-band,
 .question-band,
 .summary-grid,
-.analysis-layout {
+.analysis-layout,
+.view-nav,
+.compare-layout,
+.compare-results {
   margin-top: 16px;
+}
+
+.view-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.view-tab {
+  width: auto;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.view-tab.active {
+  border-color: var(--accent);
+  background: #e9f6f3;
+  color: var(--accent-dark);
 }
 
 .controls-band,
@@ -228,6 +250,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
 .answer-text {
   color: var(--ink);
   line-height: 1.45;
@@ -270,6 +297,92 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
   gap: 14px;
+}
+
+.compare-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.filter-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.check-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 42px;
+  color: var(--ink);
+}
+
+.check-filter input,
+.player-check-row input {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--accent);
+}
+
+.player-check-list {
+  display: grid;
+  max-height: 680px;
+  overflow: auto;
+  border-top: 1px solid var(--line);
+}
+
+.player-check-row {
+  display: grid;
+  grid-template-columns: 22px minmax(180px, 1.1fr) minmax(150px, 0.8fr) minmax(130px, 0.7fr);
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.player-check-row:hover {
+  background: #f4faf8;
+}
+
+.player-check-name {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.compare-control-row {
+  width: min(360px, 100%);
+  margin-bottom: 12px;
+}
+
+.selected-player-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.selected-player-chip {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: #f4faf8;
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.compare-chart {
+  min-height: 440px;
+}
+
+.empty-state {
+  padding: 18px 0;
+  color: var(--muted);
 }
 
 .panel {
@@ -443,7 +556,8 @@ tbody tr:hover,
 
   .controls-band,
   .summary-grid,
-  .analysis-layout {
+  .analysis-layout,
+  .compare-layout {
     grid-template-columns: 1fr;
   }
 

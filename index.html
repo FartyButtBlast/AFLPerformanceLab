@@ -85,135 +85,198 @@
         </div>
       </header>
 
-      <section class="controls-band">
-        <label>
-          Team
-          <select id="teamSelect"></select>
-        </label>
-        <label>
-          Stat
-          <select id="statSelect"></select>
-        </label>
-        <label>
-          Compare
-          <select id="compareSelect">
-            <option value="recent">Last three games vs earlier games</option>
-            <option value="lastGame">Last game vs previous three</option>
-            <option value="halves">Second half of season vs first half</option>
-          </select>
-        </label>
+      <nav class="view-nav" aria-label="App views">
+        <button id="teamViewButton" class="view-tab active" type="button">Team dashboard</button>
+        <button id="playerCompareViewButton" class="view-tab" type="button">Player comparison</button>
+      </nav>
+
+      <section id="teamView">
+        <section class="controls-band">
+          <label>
+            Team
+            <select id="teamSelect"></select>
+          </label>
+          <label>
+            Stat
+            <select id="statSelect"></select>
+          </label>
+          <label>
+            Compare
+            <select id="compareSelect">
+              <option value="recent">Last three games vs earlier games</option>
+              <option value="lastGame">Last game vs previous three</option>
+              <option value="halves">Second half of season vs first half</option>
+            </select>
+          </label>
+        </section>
+
+        <section class="question-band">
+          <label for="questionInput">Ask a question</label>
+          <div class="ask-row">
+            <input
+              id="questionInput"
+              placeholder="Try: who is improving at Carlton in clearances, or which teams are down in goals?"
+            />
+            <button id="askButton" type="button">Ask</button>
+          </div>
+          <p id="answerText" class="answer-text"></p>
+        </section>
+
+        <section class="summary-grid">
+          <article class="metric-panel">
+            <span>Team direction</span>
+            <strong id="teamDirection">-</strong>
+            <small id="teamDirectionDetail">-</small>
+          </article>
+          <article class="metric-panel">
+            <span>Improvers</span>
+            <strong id="improverCount">-</strong>
+            <small>Players above the trend threshold</small>
+          </article>
+          <article class="metric-panel">
+            <span>Watchlist</span>
+            <strong id="declinerCount">-</strong>
+            <small>Players moving backwards on the selected stat</small>
+          </article>
+          <article class="metric-panel">
+            <span>Team stat rank</span>
+            <strong id="teamRank">-</strong>
+            <small id="teamRankDetail">-</small>
+          </article>
+        </section>
+
+        <section class="analysis-layout">
+          <article class="panel wide">
+            <div class="panel-head">
+              <div>
+                <h2>Team Rollup</h2>
+                <p id="rollupCaption">Per-game trend across seasons.</p>
+              </div>
+            </div>
+            <div id="teamTrendChart" class="chart"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>League Context</h2>
+                <p>Latest per-game ranking by selected stat.</p>
+              </div>
+            </div>
+            <div id="leagueChart" class="chart compact"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Player Movers</h2>
+                <p>Improving and declining players in the current team.</p>
+              </div>
+            </div>
+            <div id="moversList" class="movers-list"></div>
+          </article>
+
+          <article class="panel wide">
+            <div class="panel-head">
+              <div>
+                <h2>Player Detail</h2>
+                <p>Click a player to inspect selected stat movement by round.</p>
+              </div>
+              <select id="playerSelect"></select>
+            </div>
+            <p id="playerChartCaption" class="chart-caption">Selected stat by round</p>
+            <div id="playerChart" class="chart"></div>
+          </article>
+
+          <article class="panel table-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Stat Table</h2>
+                <p>Latest season player snapshot with trend signals.</p>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Role</th>
+                    <th>PAV</th>
+                    <th>Trend</th>
+                    <th>Signal</th>
+                  </tr>
+                </thead>
+                <tbody id="playerTable"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel pav-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Player PAV</h2>
+                <p id="playerPavCaption">PAV by round.</p>
+              </div>
+            </div>
+            <div id="playerPavChart" class="chart"></div>
+          </article>
+        </section>
       </section>
 
-      <section class="question-band">
-        <label for="questionInput">Ask a question</label>
-        <div class="ask-row">
-          <input
-            id="questionInput"
-            placeholder="Try: who is improving at Carlton in clearances, or which teams are down in goals?"
-          />
-          <button id="askButton" type="button">Ask</button>
-        </div>
-        <p id="answerText" class="answer-text"></p>
-      </section>
-
-      <section class="summary-grid">
-        <article class="metric-panel">
-          <span>Team direction</span>
-          <strong id="teamDirection">-</strong>
-          <small id="teamDirectionDetail">-</small>
-        </article>
-        <article class="metric-panel">
-          <span>Improvers</span>
-          <strong id="improverCount">-</strong>
-          <small>Players above the trend threshold</small>
-        </article>
-        <article class="metric-panel">
-          <span>Watchlist</span>
-          <strong id="declinerCount">-</strong>
-          <small>Players moving backwards on the selected stat</small>
-        </article>
-        <article class="metric-panel">
-          <span>Team stat rank</span>
-          <strong id="teamRank">-</strong>
-          <small id="teamRankDetail">-</small>
-        </article>
-      </section>
-
-      <section class="analysis-layout">
-        <article class="panel wide">
-          <div class="panel-head">
-            <div>
-              <h2>Team Rollup</h2>
-              <p id="rollupCaption">Per-game trend across seasons.</p>
+      <section id="playerCompareView" hidden>
+        <section id="playerCompareSetup" class="compare-layout">
+          <aside class="panel filter-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Filters</h2>
+                <p>Shorten the player list.</p>
+              </div>
             </div>
-          </div>
-          <div id="teamTrendChart" class="chart"></div>
-        </article>
+            <label>
+              Team
+              <select id="allPlayerTeamFilter"></select>
+            </label>
+            <label>
+              Position
+              <select id="allPlayerPositionFilter"></select>
+            </label>
+            <label class="check-filter">
+              <input id="allPlayerImprovingFilter" type="checkbox" />
+              Improving
+            </label>
+          </aside>
 
-        <article class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>League Context</h2>
-              <p>Latest per-game ranking by selected stat.</p>
+          <article class="panel all-player-panel">
+            <div class="panel-head">
+              <div>
+                <h2>All Players</h2>
+                <p id="allPlayerListSummary">Select players to compare.</p>
+              </div>
+              <button id="openCompareButton" type="button">Compare selected</button>
             </div>
-          </div>
-          <div id="leagueChart" class="chart compact"></div>
-        </article>
+            <div id="allPlayerList" class="player-check-list"></div>
+          </article>
+        </section>
 
-        <article class="panel">
-          <div class="panel-head">
-            <div>
-              <h2>Player Movers</h2>
-              <p>Improving and declining players in the current team.</p>
+        <section id="playerCompareResults" class="compare-results" hidden>
+          <article class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Compare Players</h2>
+                <p id="selectedCompareSummary">Selected players by round.</p>
+              </div>
+              <button id="backToPlayerListButton" class="secondary-button" type="button">Back to player list</button>
             </div>
-          </div>
-          <div id="moversList" class="movers-list"></div>
-        </article>
-
-        <article class="panel wide">
-          <div class="panel-head">
-            <div>
-              <h2>Player Detail</h2>
-              <p>Click a player to inspect selected stat movement by round.</p>
+            <div class="compare-control-row">
+              <label>
+                Statistic
+                <select id="compareStatSelect"></select>
+              </label>
             </div>
-            <select id="playerSelect"></select>
-          </div>
-          <p id="playerChartCaption" class="chart-caption">Selected stat by round</p>
-          <div id="playerChart" class="chart"></div>
-        </article>
-
-        <article class="panel table-panel">
-          <div class="panel-head">
-            <div>
-              <h2>Stat Table</h2>
-              <p>Latest season player snapshot with trend signals.</p>
-            </div>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Role</th>
-                  <th>PAV</th>
-                  <th>Trend</th>
-                  <th>Signal</th>
-                </tr>
-              </thead>
-              <tbody id="playerTable"></tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="panel pav-panel">
-          <div class="panel-head">
-            <div>
-              <h2>Player PAV</h2>
-              <p id="playerPavCaption">PAV by round.</p>
-            </div>
-          </div>
-          <div id="playerPavChart" class="chart"></div>
-        </article>
+            <div id="selectedPlayerChips" class="selected-player-chips"></div>
+            <div id="playerCompareChart" class="chart compare-chart"></div>
+          </article>
+        </section>
       </section>
     </main>
 
@@ -223,6 +286,6 @@
     <script src="./auth.js?v=auth-3"></script>
     <script src="./data/afl-data.js?v=season-2026"></script>
     <script src="./data/player-positions.js?v=positions-2"></script>
-    <script src="./app.js?v=layout-2"></script>
+    <script src="./app.js?v=compare-1"></script>
   </body>
 </html>
