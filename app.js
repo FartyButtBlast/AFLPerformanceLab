@@ -468,6 +468,17 @@ function svgMultiLineChart(container, series, options = {}) {
   const minRound = Math.min(...allPoints.map((point) => point.round));
   const maxRound = Math.max(...allPoints.map((point) => point.round));
   const colors = ["#007c74", "#315da8", "#b46a00", "#b7394a", "#5f5aa2", "#287a3e", "#8a4d1f", "#4f6f74"];
+  const legend = el("div", { class: "compare-legend" });
+  series.forEach((item, index) => {
+    legend.append(
+      el("span", { class: "legend-item" }, [
+        el("span", { class: "legend-swatch", style: `background:${colors[index % colors.length]}` }),
+        el("span", { text: item.label }),
+      ]),
+    );
+  });
+  container.append(legend);
+
   const x = (round) => pad.left + ((round - minRound) / Math.max(maxRound - minRound, 1)) * (width - pad.left - pad.right);
   const y = (value) => pad.top + (1 - (value - min) / span) * (height - pad.top - pad.bottom);
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -490,6 +501,10 @@ function svgMultiLineChart(container, series, options = {}) {
     item.points.forEach((point) => {
       svg.append(svgNode("circle", { cx: x(point.round), cy: y(point.value), r: 4, fill: color }));
     });
+    const lastPoint = item.points.at(-1);
+    if (lastPoint) {
+      svg.append(svgNode("text", { x: Math.min(x(lastPoint.round) + 7, width - 120), y: y(lastPoint.value) - 7, fill: color, class: "line-label" }, item.label.split(" (")[0]));
+    }
   });
   container.append(svg);
 }
@@ -691,7 +706,8 @@ function filteredPlayerRows() {
 function renderPlayerComparisonList() {
   const rows = filteredPlayerRows();
   allPlayerListSummary.textContent = `${rows.length} players shown, ${selectedComparePlayers.size} selected.`;
-  openCompareButton.disabled = selectedComparePlayers.size < 1;
+  openCompareButton.disabled = selectedComparePlayers.size < 2;
+  openCompareButton.textContent = selectedComparePlayers.size < 2 ? "Select 2+ players" : "Compare selected";
   allPlayerList.replaceChildren(
     ...rows.map((row) => {
       const checkbox = el("input", { type: "checkbox" });
@@ -712,7 +728,7 @@ function renderPlayerComparisonList() {
 }
 
 function openPlayerCompareResults() {
-  if (!selectedComparePlayers.size) return;
+  if (selectedComparePlayers.size < 2) return;
   playerCompareSetup.hidden = true;
   playerCompareResults.hidden = false;
   renderPlayerCompareResults();
