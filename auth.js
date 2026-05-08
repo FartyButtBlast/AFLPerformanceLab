@@ -157,8 +157,8 @@
       return;
     }
     window.trackAppEvent?.("registration_requested");
-    setMessage("Account created. Check your email to confirm the registration.", "success");
     setMode("login");
+    setMessage("Account created. Please check your email for the verification link before logging in.", "success");
   });
 
   forms.reset.addEventListener("submit", async (event) => {
