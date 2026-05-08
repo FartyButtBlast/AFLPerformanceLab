@@ -718,8 +718,7 @@ function renderPlayerComparisonList() {
         renderPlayerComparisonList();
       });
       return el("label", { class: "player-check-row" }, [
-        checkbox,
-        el("span", { class: "player-check-name", text: row.player }),
+        el("span", { class: "player-check-name" }, [checkbox, el("span", { text: row.player })]),
         el("span", { text: row.team }),
         el("span", { text: row.position }),
       ]);

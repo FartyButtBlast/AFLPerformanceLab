@@ -333,7 +333,7 @@ button:disabled {
 
 .player-check-header,
 .player-check-row {
-  grid-template-columns: 42px minmax(180px, 1.1fr) minmax(150px, 0.8fr) minmax(130px, 0.7fr);
+  grid-template-columns: minmax(220px, 1.2fr) minmax(160px, 0.8fr) minmax(140px, 0.7fr);
 }
 
 .player-check-header {
@@ -368,6 +368,9 @@ button:disabled {
 }
 
 .player-check-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   color: var(--ink);
   font-weight: 800;
 }
