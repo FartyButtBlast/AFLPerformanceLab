@@ -325,6 +325,17 @@ option {
   color: #ff5b63;
 }
 
+#improversPanel,
+#watchlistPanel {
+  cursor: pointer;
+}
+
+#improversPanel:hover,
+#watchlistPanel:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  transform: translateY(-1px);
+}
+
 .metric-panel span,
 .metric-panel small,
 .panel-head p {

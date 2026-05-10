@@ -34,6 +34,7 @@ let selectedStat = defaultStat;
 let selectedPlayer = "";
 let lastQuestion = "";
 let activeView = "team";
+let playerListSignalFilter = "all";
 const selectedComparePlayers = new Set();
 
 const roleOverrides = {
@@ -317,6 +318,7 @@ function playerSeasonRows() {
       const role = inferRole(record);
       const games = playerRounds(record.team, record.player);
       const trend = playerTrend(record.team, record.player, "INDEX");
+      const activeStatTrend = selectedStatTrend(record.team, record.player);
       return {
         key: comparePlayerKey(record.team, record.player),
         player: record.player,
@@ -324,6 +326,7 @@ function playerSeasonRows() {
         position,
         role,
         improving: trend.direction === "up",
+        activeDirection: activeStatTrend.direction,
         games: games.length,
       };
     })
@@ -337,6 +340,15 @@ function playerTrend(team, player, stat) {
   const baseline = avg(split.baseline, stat);
   const change = baseline === null || recent === null ? 0 : recent - baseline;
   return { change, direction: baseline === null || recent === null ? "flat" : changeDirection(stat, change) };
+}
+
+function selectedStatTrend(team, player) {
+  const games = playerRounds(team, player);
+  const split = splitForComparison(games, compareSelect.value);
+  const recent = avg(split.recent, selectedStat);
+  const baseline = avg(split.baseline, selectedStat);
+  const change = baseline === null || recent === null ? 0 : recent - baseline;
+  return { change, direction: baseline === null || recent === null ? "flat" : changeDirection(selectedStat, change) };
 }
 
 function playerRounds(team, player) {
@@ -714,6 +726,8 @@ function filteredPlayerRows() {
     if (team !== "all" && row.team !== team) return false;
     if (position !== "all" && row.position !== position) return false;
     if (improvingOnly && !row.improving) return false;
+    if (playerListSignalFilter === "improvers" && row.activeDirection !== "up") return false;
+    if (playerListSignalFilter === "watchlist" && row.activeDirection !== "down") return false;
     return true;
   });
 }
@@ -745,6 +759,18 @@ function renderPlayerComparisonList() {
 function clearCompareSelection() {
   selectedComparePlayers.clear();
   renderPlayerComparisonList();
+}
+
+function openSignalPlayerList(signal) {
+  playerListSignalFilter = signal;
+  allPlayerTeamFilter.value = selectedTeam;
+  allPlayerPositionFilter.value = "all";
+  allPlayerImprovingFilter.checked = signal === "improvers";
+  playerCompareResults.hidden = true;
+  playerCompareSetup.hidden = false;
+  setActiveView("players");
+  renderPlayerComparisonList();
+  window.trackAppEvent?.("signal_player_list_opened", { signal, team: selectedTeam, stat: selectedStat });
 }
 
 function openPlayerCompareResults() {
@@ -839,8 +865,14 @@ questionInput.addEventListener("keydown", (event) => {
 teamViewButton.addEventListener("click", () => setActiveView("team"));
 playerCompareViewButton.addEventListener("click", () => setActiveView("players"));
 allPlayerTeamFilter.addEventListener("change", renderPlayerComparisonList);
-allPlayerPositionFilter.addEventListener("change", renderPlayerComparisonList);
-allPlayerImprovingFilter.addEventListener("change", renderPlayerComparisonList);
+allPlayerPositionFilter.addEventListener("change", () => {
+  playerListSignalFilter = "all";
+  renderPlayerComparisonList();
+});
+allPlayerImprovingFilter.addEventListener("change", () => {
+  playerListSignalFilter = "all";
+  renderPlayerComparisonList();
+});
 openCompareButton.addEventListener("click", openPlayerCompareResults);
 clearCompareSelectionButton.addEventListener("click", clearCompareSelection);
 backToPlayerListButton.addEventListener("click", backToPlayerComparisonList);
@@ -848,6 +880,8 @@ compareStatSelect.addEventListener("change", () => {
   renderPlayerCompareResults();
   window.trackAppEvent?.("player_compare_stat_selected", { stat: compareStatSelect.value });
 });
+document.querySelector("#improversPanel").addEventListener("click", () => openSignalPlayerList("improvers"));
+document.querySelector("#watchlistPanel").addEventListener("click", () => openSignalPlayerList("watchlist"));
 
 populateControls();
 render();
