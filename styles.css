@@ -309,6 +309,22 @@ option {
   border-top: 3px solid rgba(229, 27, 35, 0.82);
 }
 
+.metric-panel.good {
+  border-top-color: var(--green);
+}
+
+.metric-panel.danger {
+  border-top-color: var(--red);
+}
+
+.metric-panel.good strong {
+  color: var(--green);
+}
+
+.metric-panel.danger strong {
+  color: #ff5b63;
+}
+
 .metric-panel span,
 .metric-panel small,
 .panel-head p {

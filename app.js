@@ -580,6 +580,12 @@ function renderSummary(movers) {
   const decliners = movers.filter((row) => row.direction === "down").length;
   const league = leagueLatest(selectedStat);
   const rank = league.findIndex((row) => row.team === selectedTeam) + 1;
+  const teamIsImproving = direction === "up";
+  const rankIsTopTier = rank > 0 && rank <= Math.ceil(league.length * 0.2);
+  const teamDirectionPanel = document.querySelector("#teamDirectionPanel");
+  const improversPanel = document.querySelector("#improversPanel");
+  const watchlistPanel = document.querySelector("#watchlistPanel");
+  const teamRankPanel = document.querySelector("#teamRankPanel");
 
   document.querySelector("#teamDirection").textContent = signalText(direction);
   document.querySelector("#teamDirectionDetail").textContent = `${change >= 0 ? "+" : ""}${fmt(change)} ${data.statLabels[selectedStat]} vs earlier ${season}`;
@@ -587,6 +593,14 @@ function renderSummary(movers) {
   document.querySelector("#declinerCount").textContent = decliners;
   document.querySelector("#teamRank").textContent = `${rank} / ${league.length}`;
   document.querySelector("#teamRankDetail").textContent = `${fmt(league[rank - 1]?.value ?? latest)} average in ${season}`;
+  teamDirectionPanel.classList.toggle("good", teamIsImproving);
+  teamDirectionPanel.classList.toggle("danger", !teamIsImproving);
+  improversPanel.classList.toggle("good", teamIsImproving);
+  improversPanel.classList.toggle("danger", !teamIsImproving);
+  watchlistPanel.classList.add("danger");
+  watchlistPanel.classList.remove("good");
+  teamRankPanel.classList.toggle("good", rankIsTopTier);
+  teamRankPanel.classList.toggle("danger", !rankIsTopTier);
 }
 
 function renderMovers(movers) {
