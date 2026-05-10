@@ -1,16 +1,18 @@
 :root {
-  color-scheme: light;
-  --bg: #f5f7f4;
-  --ink: #17201b;
-  --muted: #617067;
-  --line: #d9e1da;
-  --panel: #ffffff;
-  --accent: #007c74;
-  --accent-dark: #005b56;
-  --amber: #b46a00;
-  --red: #b7394a;
-  --blue: #315da8;
-  --shadow: 0 16px 40px rgba(28, 44, 35, 0.08);
+  color-scheme: dark;
+  --bg: #07101f;
+  --ink: #f6f8fc;
+  --muted: #aeb9c1;
+  --line: rgba(174, 185, 193, 0.2);
+  --panel: #0c1830;
+  --panel-strong: #111f3d;
+  --accent: #e51b23;
+  --accent-dark: #ff4d55;
+  --amber: #f3b236;
+  --red: #e51b23;
+  --blue: #203669;
+  --green: #12b886;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.32);
 }
 
 * {
@@ -19,7 +21,10 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at top left, rgba(229, 27, 35, 0.18), transparent 34rem),
+    radial-gradient(circle at top right, rgba(32, 54, 105, 0.76), transparent 36rem),
+    linear-gradient(180deg, #07101f 0%, #0a1326 48%, #050913 100%);
   color: var(--ink);
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -48,7 +53,7 @@ select {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(245, 247, 244, 0.96);
+  background: rgba(7, 16, 31, 0.92);
   backdrop-filter: blur(12px);
 }
 
@@ -58,7 +63,7 @@ select {
   gap: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background: linear-gradient(180deg, rgba(17, 31, 61, 0.98), rgba(12, 24, 48, 0.98));
   box-shadow: var(--shadow);
   padding: 24px;
 }
@@ -77,15 +82,15 @@ select {
 .secondary-button {
   min-height: 36px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05);
   color: var(--ink);
   padding: 0 10px;
 }
 
 .auth-tab.active {
   border-color: var(--accent);
-  background: #e9f6f3;
-  color: var(--accent-dark);
+  background: rgba(229, 27, 35, 0.18);
+  color: #fff;
 }
 
 .auth-form {
@@ -111,7 +116,7 @@ select {
 .auth-notice {
   border: 1px solid #f1c6cc;
   border-radius: 8px;
-  background: #fff5f6;
+  background: rgba(229, 27, 35, 0.08);
   padding: 12px;
 }
 
@@ -120,7 +125,8 @@ select {
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  padding: 8px 0 22px;
+  padding: 8px 0 24px;
+  border-bottom: 1px solid rgba(174, 185, 193, 0.18);
 }
 
 .eyebrow {
@@ -161,7 +167,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.06);
   color: inherit;
   text-decoration: none;
 }
@@ -189,14 +195,14 @@ h2 {
   width: auto;
   min-height: 38px;
   border: 1px solid var(--line);
-  background: var(--panel);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--muted);
 }
 
 .view-tab.active {
   border-color: var(--accent);
-  background: #e9f6f3;
-  color: var(--accent-dark);
+  background: linear-gradient(180deg, rgba(229, 27, 35, 0.28), rgba(229, 27, 35, 0.16));
+  color: #fff;
 }
 
 .controls-band,
@@ -206,7 +212,7 @@ h2 {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.72);
+  background: linear-gradient(180deg, rgba(17, 31, 61, 0.92), rgba(12, 24, 48, 0.9));
   box-shadow: var(--shadow);
 }
 
@@ -228,9 +234,15 @@ input {
   min-height: 42px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: var(--panel);
+  background: rgba(4, 9, 19, 0.72);
   color: var(--ink);
   padding: 0 12px;
+}
+
+select:focus,
+input:focus {
+  outline: 2px solid rgba(229, 27, 35, 0.38);
+  border-color: rgba(229, 27, 35, 0.72);
 }
 
 .ask-row {
@@ -244,15 +256,27 @@ button {
   border: 0;
   border-radius: 6px;
   padding: 0 18px;
-  background: var(--accent);
+  background: linear-gradient(180deg, #ff343d, #d9161e);
   color: #fff;
   font-weight: 800;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(229, 27, 35, 0.24);
 }
 
 button:disabled {
   cursor: not-allowed;
   opacity: 0.48;
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+  color: var(--ink);
+}
+
+option {
+  background: #0c1830;
+  color: var(--ink);
 }
 
 .answer-text {
@@ -270,7 +294,9 @@ button:disabled {
 .panel {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: var(--panel);
+  background:
+    linear-gradient(180deg, rgba(17, 31, 61, 0.96), rgba(12, 24, 48, 0.96)),
+    var(--panel);
   box-shadow: var(--shadow);
 }
 
@@ -280,6 +306,7 @@ button:disabled {
   display: grid;
   align-content: space-between;
   gap: 8px;
+  border-top: 3px solid rgba(229, 27, 35, 0.82);
 }
 
 .metric-panel span,
@@ -291,6 +318,7 @@ button:disabled {
 .metric-panel strong {
   font-size: clamp(1.55rem, 3vw, 2.4rem);
   line-height: 1;
+  color: #fff;
 }
 
 .analysis-layout {
@@ -364,7 +392,7 @@ button:disabled {
 }
 
 .player-check-row:hover {
-  background: #f4faf8;
+  background: rgba(229, 27, 35, 0.08);
 }
 
 .player-check-name {
@@ -391,8 +419,8 @@ button:disabled {
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 7px 10px;
-  background: #f4faf8;
-  color: var(--accent-dark);
+  background: rgba(229, 27, 35, 0.12);
+  color: #fff;
   font-size: 0.82rem;
   font-weight: 800;
 }
@@ -485,13 +513,13 @@ svg {
 }
 
 .grid-line {
-  stroke: #edf1ed;
+  stroke: rgba(174, 185, 193, 0.14);
   stroke-width: 1;
 }
 
 .line-path {
   fill: none;
-  stroke: var(--accent);
+  stroke: #22c7b7;
   stroke-width: 3;
 }
 
@@ -512,6 +540,7 @@ svg {
   border-radius: 8px;
   padding: 11px;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .mover strong {
@@ -533,7 +562,7 @@ svg {
 }
 
 .pill.up {
-  background: var(--accent);
+  background: var(--green);
 }
 
 .pill.down {
@@ -541,7 +570,7 @@ svg {
 }
 
 .pill.flat {
-  background: var(--muted);
+  background: #667383;
 }
 
 .table-panel,
@@ -571,7 +600,7 @@ td {
 th {
   position: sticky;
   top: 0;
-  background: var(--panel);
+  background: #101d37;
   z-index: 1;
   color: var(--muted);
   font-size: 0.78rem;
@@ -584,7 +613,7 @@ tbody tr {
 
 tbody tr:hover,
 .mover:hover {
-  background: #f4faf8;
+  background: rgba(229, 27, 35, 0.08);
 }
 
 .bar-label {
