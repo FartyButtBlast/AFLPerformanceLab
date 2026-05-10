@@ -88,6 +88,7 @@
       <nav class="view-nav" aria-label="App views">
         <button id="teamViewButton" class="view-tab active" type="button">Team dashboard</button>
         <button id="playerCompareViewButton" class="view-tab" type="button">Player comparison</button>
+        <button id="newsViewButton" class="view-tab" type="button">Newsfeed</button>
       </nav>
 
       <section id="teamView">
@@ -286,6 +287,19 @@
           </article>
         </section>
       </section>
+
+      <section id="newsView" hidden>
+        <section class="news-header panel">
+          <div>
+            <p class="eyebrow">AFL News</p>
+            <h2>Latest Headlines</h2>
+            <p id="newsSummary">Reputable AFL coverage from trusted publishers.</p>
+          </div>
+          <span id="newsUpdatedBadge" class="news-updated">Refreshing on build</span>
+        </section>
+
+        <section id="newsGrid" class="news-grid" aria-live="polite"></section>
+      </section>
     </main>
 
     <script src="./analytics-config.js?v=analytics-1"></script>
@@ -294,6 +308,7 @@
     <script src="./auth.js?v=auth-4"></script>
     <script src="./data/afl-data.js?v=season-2026"></script>
     <script src="./data/player-positions.js?v=positions-2"></script>
-    <script src="./app.js?v=signals-1"></script>
+    <script src="./data/news-feed.js?v=news-1"></script>
+    <script src="./app.js?v=news-1"></script>
   </body>
 </html>

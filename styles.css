@@ -182,7 +182,8 @@ h2 {
 .analysis-layout,
 .view-nav,
 .compare-layout,
-.compare-results {
+.compare-results,
+#newsView {
   margin-top: 16px;
 }
 
@@ -478,6 +479,104 @@ option {
   min-height: 440px;
 }
 
+.news-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.news-updated {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.news-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(17, 31, 61, 0.96), rgba(12, 24, 48, 0.96)),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.news-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  object-fit: cover;
+  background: #101d37;
+}
+
+.news-image-placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.news-card-body {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.news-source {
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: rgba(229, 27, 35, 0.18);
+  color: #fff;
+}
+
+.news-card h3 {
+  margin: 0;
+  font-size: 1.04rem;
+  line-height: 1.25;
+}
+
+.news-summary {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.news-card a {
+  width: fit-content;
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.news-card a:hover {
+  color: var(--accent-dark);
+}
+
 .empty-state {
   padding: 18px 0;
   color: var(--muted);
@@ -668,8 +767,14 @@ tbody tr:hover,
   .controls-band,
   .summary-grid,
   .analysis-layout,
-  .compare-layout {
+  .compare-layout,
+  .news-grid {
     grid-template-columns: 1fr;
+  }
+
+  .news-header {
+    display: grid;
+    align-items: start;
   }
 
   .ask-row {

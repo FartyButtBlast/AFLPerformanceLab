@@ -9,8 +9,10 @@ const questionInput = document.querySelector("#questionInput");
 const askButton = document.querySelector("#askButton");
 const teamView = document.querySelector("#teamView");
 const playerCompareView = document.querySelector("#playerCompareView");
+const newsView = document.querySelector("#newsView");
 const teamViewButton = document.querySelector("#teamViewButton");
 const playerCompareViewButton = document.querySelector("#playerCompareViewButton");
+const newsViewButton = document.querySelector("#newsViewButton");
 const playerCompareSetup = document.querySelector("#playerCompareSetup");
 const playerCompareResults = document.querySelector("#playerCompareResults");
 const allPlayerTeamFilter = document.querySelector("#allPlayerTeamFilter");
@@ -25,6 +27,9 @@ const compareStatSelect = document.querySelector("#compareStatSelect");
 const selectedCompareSummary = document.querySelector("#selectedCompareSummary");
 const selectedPlayerChips = document.querySelector("#selectedPlayerChips");
 const playerCompareChart = document.querySelector("#playerCompareChart");
+const newsGrid = document.querySelector("#newsGrid");
+const newsSummary = document.querySelector("#newsSummary");
+const newsUpdatedBadge = document.querySelector("#newsUpdatedBadge");
 
 const positiveStats = ["INDEX", "KI", "MK", "HB", "DI", "DA", "GL", "HO", "TK", "RB", "IF", "CL", "CP", "UP", "CM", "MI", "OP", "BO", "GA"];
 const lowerIsBetter = ["CG", "FA"];
@@ -713,9 +718,47 @@ function setActiveView(view) {
   activeView = view;
   teamView.hidden = view !== "team";
   playerCompareView.hidden = view !== "players";
+  newsView.hidden = view !== "news";
   teamViewButton.classList.toggle("active", view === "team");
   playerCompareViewButton.classList.toggle("active", view === "players");
+  newsViewButton.classList.toggle("active", view === "news");
   if (view === "players") renderPlayerComparisonList();
+  if (view === "news") renderNewsFeed();
+}
+
+function renderNewsFeed() {
+  const feed = window.NEWS_FEED ?? { sources: [], items: [] };
+  const items = feed.items ?? [];
+  newsSummary.textContent = items.length
+    ? `${items.length} stories from ${feed.sources.join(", ")}.`
+    : "No news items are available yet. Run the build again to refresh the feed.";
+  newsUpdatedBadge.textContent = feed.fetchedAt
+    ? `Updated ${new Date(feed.fetchedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`
+    : "Refreshing on build";
+
+  if (!items.length) {
+    newsGrid.replaceChildren(el("article", { class: "panel empty-state", text: "No AFL news has been loaded yet." }));
+    return;
+  }
+
+  newsGrid.replaceChildren(
+    ...items.map((item) =>
+      el("article", { class: "news-card" }, [
+        item.image
+          ? el("img", { class: "news-image", src: item.image, alt: "" })
+          : el("div", { class: "news-image news-image-placeholder", text: item.source }),
+        el("div", { class: "news-card-body" }, [
+          el("div", { class: "news-meta" }, [
+            el("span", { class: "news-source", text: item.source }),
+            el("span", { text: item.byline || item.source }),
+          ]),
+          el("h3", { text: item.title }),
+          item.summary ? el("p", { class: "news-summary", text: item.summary }) : el("p", { class: "news-summary", text: "Open the article for the full story." }),
+          el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", text: "Read article" }),
+        ]),
+      ]),
+    ),
+  );
 }
 
 function filteredPlayerRows() {
@@ -864,6 +907,7 @@ questionInput.addEventListener("keydown", (event) => {
 });
 teamViewButton.addEventListener("click", () => setActiveView("team"));
 playerCompareViewButton.addEventListener("click", () => setActiveView("players"));
+newsViewButton.addEventListener("click", () => setActiveView("news"));
 allPlayerTeamFilter.addEventListener("change", renderPlayerComparisonList);
 allPlayerPositionFilter.addEventListener("change", () => {
   playerListSignalFilter = "all";
