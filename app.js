@@ -593,7 +593,7 @@ function populateControls() {
   compareStatSelect.value = selectedStat;
 
   allPlayerTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }), ...teams.map((team) => el("option", { value: team, text: team })));
-  newsTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }), ...teams.map((team) => el("option", { value: team, text: team })));
+  newsTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }));
   const positions = [...new Set(playerSeasonRows().map((row) => row.position))].sort();
   allPlayerPositionFilter.replaceChildren(
     el("option", { value: "all", text: "All positions" }),
@@ -752,7 +752,8 @@ function setActiveView(view) {
 
 function renderNewsFeed() {
   const feed = window.NEWS_FEED ?? { sources: [], items: [] };
-  const renderableItems = (feed.items ?? []).filter(isRenderableNewsItem);
+  const renderableItems = (feed.items ?? []).map(cleanNewsItem).filter(isRenderableNewsItem);
+  syncNewsTeamFilter(renderableItems);
   const items = filteredNewsItems(renderableItems);
   newsSummary.textContent = renderableItems.length
     ? `${items.length} of ${renderableItems.length} stories shown from ${feed.sources.join(", ")}.`
@@ -784,6 +785,63 @@ function renderNewsFeed() {
       ]),
     ),
   );
+}
+
+function newsTeamsWithItems(items) {
+  return Object.keys(teamNewsAliases)
+    .filter((team) => items.some((item) => articleMatchesTeam(item, team)))
+    .sort();
+}
+
+function syncNewsTeamFilter(items) {
+  const currentTeam = newsTeamFilter.value || "all";
+  const teams = newsTeamsWithItems(items);
+  newsTeamFilter.replaceChildren(
+    el("option", { value: "all", text: "All teams" }),
+    ...teams.map((team) => el("option", { value: team, text: team })),
+  );
+  newsTeamFilter.value = currentTeam === "all" || teams.includes(currentTeam) ? currentTeam : "all";
+}
+
+function decodeNewsEntities(value = "") {
+  let decoded = value;
+  for (let i = 0; i < 3; i += 1) {
+    const next = decoded
+      .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&apos;/g, "'")
+      .replace(/&rsquo;/g, "'")
+      .replace(/&lsquo;/g, "'")
+      .replace(/&ldquo;/g, '"')
+      .replace(/&rdquo;/g, '"')
+      .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+      .replace(/&#x([a-f0-9]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)));
+    if (next === decoded) break;
+    decoded = next;
+  }
+  return decoded;
+}
+
+function cleanNewsText(value = "") {
+  return decodeNewsEntities(value)
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function cleanNewsItem(item) {
+  return {
+    ...item,
+    title: cleanNewsText(item.title),
+    byline: cleanNewsText(item.byline),
+    source: cleanNewsText(item.source),
+    summary: cleanNewsText(item.summary),
+  };
 }
 
 function newsText(item) {
