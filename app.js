@@ -750,6 +750,12 @@ function setActiveView(view) {
   if (view === "news") renderNewsFeed();
 }
 
+function initialViewFromHash() {
+  if (window.location.hash === "#news") return "news";
+  if (window.location.hash === "#players") return "players";
+  return "team";
+}
+
 function renderNewsFeed() {
   const feed = window.NEWS_FEED ?? { sources: [], items: [] };
   const renderableItems = (feed.items ?? []).map(cleanNewsItem).filter(isRenderableNewsItem);
@@ -1056,3 +1062,4 @@ document.querySelector("#watchlistPanel").addEventListener("click", () => openSi
 populateControls();
 render();
 renderPlayerComparisonList();
+setActiveView(initialViewFromHash());

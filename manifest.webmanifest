@@ -1,0 +1,38 @@
+{
+  "name": "SportzLabs Performance Lab",
+  "short_name": "SportzLabs",
+  "description": "AFL team, player, PAV and news analytics in an installable app experience.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07101f",
+  "theme_color": "#07101f",
+  "categories": ["sports", "productivity", "news"],
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Team Dashboard",
+      "short_name": "Teams",
+      "url": "./index.html"
+    },
+    {
+      "name": "Newsfeed",
+      "short_name": "News",
+      "url": "./index.html#news"
+    }
+  ]
+}
