@@ -877,17 +877,35 @@ tbody tr:hover,
   }
 
   .view-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 0;
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(174, 185, 193, 0.22);
+    background: rgba(7, 16, 31, 0.94);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.34);
   }
 
   .view-tab {
     flex: none;
-    min-height: 44px;
-    padding: 0 8px;
-    font-size: clamp(0.76rem, 3.6vw, 0.92rem);
+    min-height: 50px;
+    padding: 0 6px;
+    border-radius: 8px;
+    font-size: clamp(0.7rem, 3.2vw, 0.84rem);
     line-height: 1.12;
     white-space: normal;
+    box-shadow: none;
+  }
+
+  .app-shell {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom));
   }
 
   .controls-band,
@@ -948,9 +966,20 @@ tbody tr:hover,
 @media (max-width: 380px) {
   .view-nav {
     grid-template-columns: 1fr;
+    position: static;
+    padding: 0;
+    border-top: 0;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    margin-top: 16px;
   }
 
   #userBadge {
     max-width: 100%;
+  }
+
+  .app-shell {
+    padding-bottom: 32px;
   }
 }
