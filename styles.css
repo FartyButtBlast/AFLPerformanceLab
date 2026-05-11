@@ -497,6 +497,18 @@ option {
   font-weight: 800;
 }
 
+.news-controls {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(260px, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(17, 31, 61, 0.92), rgba(12, 24, 48, 0.9));
+  box-shadow: var(--shadow);
+}
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -513,6 +525,18 @@ option {
     linear-gradient(180deg, rgba(17, 31, 61, 0.96), rgba(12, 24, 48, 0.96)),
     var(--panel);
   box-shadow: var(--shadow);
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.news-card:hover,
+.news-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.34);
+  transform: translateY(-2px);
+  outline: none;
 }
 
 .news-image {
@@ -566,14 +590,14 @@ option {
   line-height: 1.45;
 }
 
-.news-card a {
+.news-link {
   width: fit-content;
   color: #fff;
   font-weight: 900;
   text-decoration: none;
 }
 
-.news-card a:hover {
+.news-card:hover .news-link {
   color: var(--accent-dark);
 }
 
@@ -768,6 +792,7 @@ tbody tr:hover,
   .summary-grid,
   .analysis-layout,
   .compare-layout,
+  .news-controls,
   .news-grid {
     grid-template-columns: 1fr;
   }

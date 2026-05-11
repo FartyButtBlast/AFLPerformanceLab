@@ -53,6 +53,40 @@ function cleanSummary(value = "") {
   return stripTags(value).replace(/\s+/g, " ").slice(0, 220);
 }
 
+function cleanTitle(value = "") {
+  return stripTags(value)
+    .replace(/\s+/g, " ")
+    .replace(/^#+\s*/, "")
+    .trim();
+}
+
+function isBadNewsText(value = "") {
+  const text = value.toLowerCase();
+  return [
+    "class=",
+    "href=",
+    "typography_",
+    "taxonomybutton",
+    "button_",
+    "logo__",
+    "<time",
+    "-->",
+    "m19 ",
+    "personal finance",
+    "relationships & family",
+    "berita bahasa indonesia",
+    "emergency",
+    "appearance",
+  ].some((fragment) => text.includes(fragment));
+}
+
+function isLikelyHeadline(title) {
+  if (!title || title.length < 12 || title.length > 160) return false;
+  if (isBadNewsText(title)) return false;
+  if (/^[\w\s&]+:$/.test(title)) return false;
+  return /[a-zA-Z]/.test(title);
+}
+
 function getAttr(html, attr) {
   return html.match(new RegExp(`${attr}=["']([^"']+)["']`, "i"))?.[1] ?? "";
 }
@@ -89,14 +123,22 @@ function parseAflPage(html, source) {
 
 function parseAbcPage(html, source) {
   const items = [];
-  const articles = html.match(/<a[^>]+href=["'][^"']*\/news\/[^"']+["'][^>]*>[\s\S]*?<\/a>/gi) ?? [];
+  const aflSection = html.includes("AFL Score Centre")
+    ? html.slice(html.indexOf("AFL Score Centre"), html.indexOf("Latest AFL Audio") > 0 ? html.indexOf("Latest AFL Audio") : undefined)
+    : html;
+  const articles = aflSection.match(/<a[^>]+href=["'][^"']*\/news\/[^"']+["'][^>]*>[\s\S]*?<\/a>/gi) ?? [];
   for (const article of articles) {
     const href = absoluteUrl(getAttr(article, "href"), source.url);
-    const title = stripTags(article);
-    if (!title || title.length < 18 || !href.includes("abc.net.au/news/")) continue;
+    const title = cleanTitle(
+      article.match(/<h[1-6][^>]*>([\s\S]*?)<\/h[1-6]>/i)?.[1] ??
+        article.match(/<span[^>]*>([\s\S]*?)<\/span>/i)?.[1] ??
+        article,
+    );
+    if (!isLikelyHeadline(title) || !href.includes("abc.net.au/news/")) continue;
     const index = html.indexOf(article);
     const block = html.slice(Math.max(0, index - 600), index + 1400);
     const summary = cleanSummary(stripTags(block).replace(title, ""));
+    if (isBadNewsText(summary)) continue;
     items.push({
       title,
       byline: "ABC Sport",
@@ -113,7 +155,7 @@ function parseRss(xml, source) {
   const items = [];
   const blocks = xml.match(/<item[\s\S]*?<\/item>/gi) ?? [];
   for (const block of blocks) {
-    const title = stripTags(block.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
+    const title = cleanTitle(block.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
     const link = stripTags(block.match(/<link>([\s\S]*?)<\/link>/i)?.[1] ?? "");
     const creator = stripTags(block.match(/<dc:creator>([\s\S]*?)<\/dc:creator>/i)?.[1] ?? "");
     const description = cleanSummary(block.match(/<description>([\s\S]*?)<\/description>/i)?.[1] ?? "");
@@ -121,7 +163,7 @@ function parseRss(xml, source) {
       block.match(/<media:content[^>]+url=["']([^"']+)["']/i)?.[1] ??
       block.match(/<enclosure[^>]+url=["']([^"']+)["']/i)?.[1] ??
       "";
-    if (!title || !link) continue;
+    if (!isLikelyHeadline(title) || !link || isBadNewsText(description)) continue;
     items.push({
       title,
       byline: creator ? `${source.source} - ${creator}` : source.source,

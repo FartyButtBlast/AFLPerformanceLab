@@ -30,6 +30,8 @@ const playerCompareChart = document.querySelector("#playerCompareChart");
 const newsGrid = document.querySelector("#newsGrid");
 const newsSummary = document.querySelector("#newsSummary");
 const newsUpdatedBadge = document.querySelector("#newsUpdatedBadge");
+const newsTeamFilter = document.querySelector("#newsTeamFilter");
+const newsSearchInput = document.querySelector("#newsSearchInput");
 
 const positiveStats = ["INDEX", "KI", "MK", "HB", "DI", "DA", "GL", "HO", "TK", "RB", "IF", "CL", "CP", "UP", "CM", "MI", "OP", "BO", "GA"];
 const lowerIsBetter = ["CG", "FA"];
@@ -41,6 +43,27 @@ let lastQuestion = "";
 let activeView = "team";
 let playerListSignalFilter = "all";
 const selectedComparePlayers = new Set();
+
+const teamNewsAliases = {
+  Adelaide: ["adelaide", "crows"],
+  Brisbane: ["brisbane", "lions"],
+  Carlton: ["carlton", "blues"],
+  Collingwood: ["collingwood", "magpies", "pies"],
+  Essendon: ["essendon", "bombers", "dons"],
+  Fremantle: ["fremantle", "dockers", "freo"],
+  Geelong: ["geelong", "cats"],
+  "Gold Coast": ["gold coast", "suns"],
+  GWS: ["gws", "giants"],
+  Hawthorn: ["hawthorn", "hawks"],
+  Melbourne: ["melbourne", "demons", "dees"],
+  "North Melbourne": ["north melbourne", "kangaroos", "roos", "north"],
+  "Port Adelaide": ["port adelaide", "power", "port"],
+  Richmond: ["richmond", "tigers"],
+  "St Kilda": ["st kilda", "saints"],
+  Sydney: ["sydney", "swans"],
+  "West Coast": ["west coast", "eagles"],
+  "Western Bulldogs": ["western bulldogs", "bulldogs", "dogs"],
+};
 
 const roleOverrides = {
   "edwards, tom|essendon": "Offense",
@@ -570,6 +593,7 @@ function populateControls() {
   compareStatSelect.value = selectedStat;
 
   allPlayerTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }), ...teams.map((team) => el("option", { value: team, text: team })));
+  newsTeamFilter.replaceChildren(el("option", { value: "all", text: "All teams" }), ...teams.map((team) => el("option", { value: team, text: team })));
   const positions = [...new Set(playerSeasonRows().map((row) => row.position))].sort();
   allPlayerPositionFilter.replaceChildren(
     el("option", { value: "all", text: "All positions" }),
@@ -728,22 +752,23 @@ function setActiveView(view) {
 
 function renderNewsFeed() {
   const feed = window.NEWS_FEED ?? { sources: [], items: [] };
-  const items = feed.items ?? [];
-  newsSummary.textContent = items.length
-    ? `${items.length} stories from ${feed.sources.join(", ")}.`
+  const renderableItems = (feed.items ?? []).filter(isRenderableNewsItem);
+  const items = filteredNewsItems(renderableItems);
+  newsSummary.textContent = renderableItems.length
+    ? `${items.length} of ${renderableItems.length} stories shown from ${feed.sources.join(", ")}.`
     : "No news items are available yet. Run the build again to refresh the feed.";
   newsUpdatedBadge.textContent = feed.fetchedAt
     ? `Updated ${new Date(feed.fetchedAt).toLocaleString([], { dateStyle: "medium", timeStyle: "short" })}`
     : "Refreshing on build";
 
   if (!items.length) {
-    newsGrid.replaceChildren(el("article", { class: "panel empty-state", text: "No AFL news has been loaded yet." }));
+    newsGrid.replaceChildren(el("article", { class: "panel empty-state", text: "No AFL news matches those filters." }));
     return;
   }
 
   newsGrid.replaceChildren(
     ...items.map((item) =>
-      el("article", { class: "news-card" }, [
+      el("a", { class: "news-card", href: item.url, target: "_blank", rel: "noopener noreferrer" }, [
         item.image
           ? el("img", { class: "news-image", src: item.image, alt: "" })
           : el("div", { class: "news-image news-image-placeholder", text: item.source }),
@@ -754,11 +779,52 @@ function renderNewsFeed() {
           ]),
           el("h3", { text: item.title }),
           item.summary ? el("p", { class: "news-summary", text: item.summary }) : el("p", { class: "news-summary", text: "Open the article for the full story." }),
-          el("a", { href: item.url, target: "_blank", rel: "noopener noreferrer", text: "Read article" }),
+          el("span", { class: "news-link", text: "Read article" }),
         ]),
       ]),
     ),
   );
+}
+
+function newsText(item) {
+  return `${item.title ?? ""} ${item.summary ?? ""} ${item.byline ?? ""} ${item.source ?? ""}`.toLowerCase();
+}
+
+function isRenderableNewsItem(item) {
+  const title = item.title ?? "";
+  const text = newsText(item);
+  if (!title || !item.url) return false;
+  if (title.length < 12 || title.length > 160) return false;
+  if (!/^https?:\/\//.test(item.url)) return false;
+  return ![
+    "class=",
+    "href=",
+    "typography_",
+    "taxonomybutton",
+    "button_",
+    "logo__",
+    "<time",
+    "-->",
+    "m19 ",
+    "personal finance",
+    "relationships & family",
+    "berita bahasa indonesia",
+  ].some((fragment) => text.includes(fragment));
+}
+
+function articleMatchesTeam(item, team) {
+  if (team === "all") return true;
+  const text = newsText(item);
+  const aliases = teamNewsAliases[team] ?? [team.toLowerCase()];
+  return aliases.some((alias) => text.includes(alias));
+}
+
+function filteredNewsItems(items) {
+  const team = newsTeamFilter.value || "all";
+  const search = newsSearchInput.value.trim().toLowerCase();
+  return items
+    .filter((item) => articleMatchesTeam(item, team))
+    .filter((item) => !search || newsText(item).includes(search));
 }
 
 function filteredPlayerRows() {
@@ -908,6 +974,8 @@ questionInput.addEventListener("keydown", (event) => {
 teamViewButton.addEventListener("click", () => setActiveView("team"));
 playerCompareViewButton.addEventListener("click", () => setActiveView("players"));
 newsViewButton.addEventListener("click", () => setActiveView("news"));
+newsTeamFilter.addEventListener("change", renderNewsFeed);
+newsSearchInput.addEventListener("input", renderNewsFeed);
 allPlayerTeamFilter.addEventListener("change", renderPlayerComparisonList);
 allPlayerPositionFilter.addEventListener("change", () => {
   playerListSignalFilter = "all";
