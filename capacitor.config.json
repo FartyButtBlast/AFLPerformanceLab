@@ -1,0 +1,13 @@
+{
+  "appId": "com.sportzlabs.performancelab",
+  "appName": "SportzLabs",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic",
+    "scheme": "SportzLabs"
+  },
+  "server": {
+    "iosScheme": "https"
+  }
+}
