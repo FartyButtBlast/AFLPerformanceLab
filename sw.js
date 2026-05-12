@@ -1,11 +1,11 @@
-const CACHE_NAME = "sportzlabs-app-v1";
+const CACHE_NAME = "sportzlabs-app-v3";
 const APP_ASSETS = [
   "./",
   "./index.html",
   "./styles.css?v=mobile-tabs-2",
   "./analytics-config.js?v=analytics-1",
   "./analytics.js?v=analytics-1",
-  "./auth-config.js?v=auth-3",
+  "./auth-config.js?v=auth-6",
   "./auth.js?v=auth-4",
   "./data/afl-data.js?v=season-2026",
   "./data/player-positions.js?v=positions-2",
