@@ -128,7 +128,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Adelaide",
     "player": "Rankine, Izak",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "rankine, izak|adelaide"
   },
   {
@@ -146,7 +146,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Adelaide",
     "player": "Marsh, Mitchell",
-    "position": "Key Forward",
+    "position": "Forward",
     "playerKey": "marsh, mitchell|adelaide"
   },
   {
@@ -188,7 +188,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Adelaide",
     "player": "Cotton, Indy",
-    "position": "Forward",
+    "position": "Key Defender",
     "playerKey": "cotton, indy|adelaide"
   },
   {
@@ -266,7 +266,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Carlton",
     "player": "Hollands, Oliver",
-    "position": "Defender",
+    "position": "Midfielder",
     "playerKey": "hollands, oliver|carlton"
   },
   {
@@ -422,7 +422,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Carlton",
     "player": "Ison, Jack",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "ison, jack|carlton"
   },
   {
@@ -452,7 +452,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Carlton",
     "player": "Dean, Harry",
-    "position": "Defender",
+    "position": "Key Defender",
     "playerKey": "dean, harry|carlton"
   },
   {
@@ -674,7 +674,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Collingwood",
     "player": "Cochran, Joel",
-    "position": "Defender",
+    "position": "Key Defender",
     "playerKey": "cochran, joel|collingwood"
   },
   {
@@ -704,7 +704,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Collingwood",
     "player": "Swadling, Sam",
-    "position": "Midfielder",
+    "position": "Defender",
     "playerKey": "swadling, sam|collingwood"
   },
   {
@@ -734,7 +734,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Collingwood",
     "player": "McCarthy, Zac",
-    "position": "Ruck",
+    "position": "Key Forward",
     "playerKey": "mccarthy, zac|collingwood"
   },
   {
@@ -866,7 +866,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Essendon",
     "player": "Sharp, Dyson",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "sharp, dyson|essendon"
   },
   {
@@ -890,7 +890,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Essendon",
     "player": "Gerreyn, Kayle",
-    "position": "Key Forward",
+    "position": "Key Defender",
     "playerKey": "gerreyn, kayle|essendon"
   },
   {
@@ -1022,7 +1022,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Essendon",
     "player": "Nguyen, Jayden",
-    "position": "Defender",
+    "position": "Forward",
     "playerKey": "nguyen, jayden|essendon"
   },
   {
@@ -1550,13 +1550,13 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Geelong",
     "player": "Burke, Cillian",
-    "position": "Forward",
+    "position": "Defender",
     "playerKey": "burke, cillian|geelong"
   },
   {
     "team": "Geelong",
     "player": "O'Connor, Mark",
-    "position": "Midfielder",
+    "position": "Defender",
     "playerKey": "o'connor, mark|geelong"
   },
   {
@@ -1576,6 +1576,270 @@ window.PLAYER_POSITIONS = [
     "player": "Blicavs, Mark",
     "position": "Ruck",
     "playerKey": "blicavs, mark|geelong"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Andrew, Mac",
+    "position": "Key Defender",
+    "playerKey": "andrew, mac|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Noble, John",
+    "position": "Defender",
+    "playerKey": "noble, john|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Petracca, Christian",
+    "position": "Midfielder",
+    "playerKey": "petracca, christian|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Walter, Jed",
+    "position": "Key Forward",
+    "playerKey": "walter, jed|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Davies, Alex",
+    "position": "Midfielder",
+    "playerKey": "davies, alex|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Uwland, Bodhi",
+    "position": "Defender",
+    "playerKey": "uwland, bodhi|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Holman, Nick",
+    "position": "Forward",
+    "playerKey": "holman, nick|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Lombard, Leonardo",
+    "position": "Forward",
+    "playerKey": "lombard, leonardo|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Ugle-Hagan, Jamarra",
+    "position": "Key Forward",
+    "playerKey": "ugle-hagan, jamarra|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Ballard, Charlie",
+    "position": "Key Defender",
+    "playerKey": "ballard, charlie|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Miller, Touk",
+    "position": "Midfielder",
+    "playerKey": "miller, touk|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Himmelberg, Elliott",
+    "position": "Key Forward",
+    "playerKey": "himmelberg, elliott|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Weller, Lachie",
+    "position": "Midfielder",
+    "playerKey": "weller, lachie|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Anderson, Noah",
+    "position": "Midfielder",
+    "playerKey": "anderson, noah|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Jeffrey, Joel",
+    "position": "Defender",
+    "playerKey": "jeffrey, joel|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Rioli, Daniel",
+    "position": "Defender",
+    "playerKey": "rioli, daniel|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Rowell, Matt",
+    "position": "Midfielder",
+    "playerKey": "rowell, matt|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Humphrey, Bailey",
+    "position": "Forward",
+    "playerKey": "humphrey, bailey|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Read, Ethan",
+    "position": "Key Forward",
+    "playerKey": "read, ethan|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Long, Ben",
+    "position": "Forward",
+    "playerKey": "long, ben|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Moyle, Ned",
+    "position": "Ruck",
+    "playerKey": "moyle, ned|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Collins, Sam",
+    "position": "Key Defender",
+    "playerKey": "collins, sam|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Graham, Will",
+    "position": "Midfielder",
+    "playerKey": "graham, will|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Powell, Wil",
+    "position": "Defender",
+    "playerKey": "powell, wil|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Witts, Jarrod",
+    "position": "Ruck",
+    "playerKey": "witts, jarrod|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Rogers, Jake",
+    "position": "Forward",
+    "playerKey": "rogers, jake|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Patterson, Dylan",
+    "position": "Defender",
+    "playerKey": "patterson, dylan|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Bell, Cooper",
+    "position": "Key Forward",
+    "playerKey": "bell, cooper|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Uwland, Zeke",
+    "position": "Midfielder",
+    "playerKey": "uwland, zeke|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Clohesy, Sam",
+    "position": "Midfielder",
+    "playerKey": "clohesy, sam|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "King, Ben",
+    "position": "Key Forward",
+    "playerKey": "king, ben|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Murray, Jai",
+    "position": "Midfielder",
+    "playerKey": "murray, jai|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Evans, Zak",
+    "position": "Midfielder",
+    "playerKey": "evans, zak|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Knobel, Max",
+    "position": "Ruck",
+    "playerKey": "knobel, max|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Addinsall, Beau",
+    "position": "Midfielder",
+    "playerKey": "addinsall, beau|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Gulbin, Lachlan",
+    "position": "Forward",
+    "playerKey": "gulbin, lachlan|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Thomas, Avery",
+    "position": "Defender",
+    "playerKey": "thomas, avery|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Eastham, Asher",
+    "position": "Forward",
+    "playerKey": "eastham, asher|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Coulson, Koby",
+    "position": "Midfielder",
+    "playerKey": "coulson, koby|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Jepson, Ben",
+    "position": "Midfielder",
+    "playerKey": "jepson, ben|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Lewis, Caleb",
+    "position": "Key Defender",
+    "playerKey": "lewis, caleb|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Graham, Caleb",
+    "position": "Key Defender",
+    "playerKey": "graham, caleb|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Adams, Oscar",
+    "position": "Key Defender",
+    "playerKey": "adams, oscar|gold coast"
+  },
+  {
+    "team": "Gold Coast",
+    "player": "Farrar, Jy",
+    "position": "Forward",
+    "playerKey": "farrar, jy|gold coast"
   },
   {
     "team": "Greater Western Sydney",
@@ -1754,7 +2018,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Greater Western Sydney",
     "player": "McMullin, Toby",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "mcmullin, toby|greater western sydney"
   },
   {
@@ -1820,7 +2084,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Greater Western Sydney",
     "player": "Hamilton, Riley",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "hamilton, riley|greater western sydney"
   },
   {
@@ -2066,7 +2330,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Hawthorn",
     "player": "Ramsden, Max",
-    "position": "Ruck",
+    "position": "Forward",
     "playerKey": "ramsden, max|hawthorn"
   },
   {
@@ -2186,7 +2450,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Melbourne",
     "player": "Langdon, Ed",
-    "position": "Midfielder",
+    "position": "Defender",
     "playerKey": "langdon, ed|melbourne"
   },
   {
@@ -2240,7 +2504,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Melbourne",
     "player": "Rivers, Trent",
-    "position": "Defender",
+    "position": "Midfielder",
     "playerKey": "rivers, trent|melbourne"
   },
   {
@@ -2324,25 +2588,25 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Melbourne",
     "player": "Berry, Oscar",
-    "position": "Defender",
+    "position": "Key Defender",
     "playerKey": "berry, oscar|melbourne"
   },
   {
     "team": "Melbourne",
     "player": "Mentha, Ricky",
-    "position": "Forward",
+    "position": "Defender",
     "playerKey": "mentha, ricky|melbourne"
   },
   {
     "team": "Melbourne",
     "player": "Onley, Riley",
-    "position": "Midfielder",
+    "position": "Defender",
     "playerKey": "onley, riley|melbourne"
   },
   {
     "team": "Melbourne",
     "player": "Cross, Paddy",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "cross, paddy|melbourne"
   },
   {
@@ -2354,20 +2618,284 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Melbourne",
     "player": "Henderson, Jack",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "henderson, jack|melbourne"
   },
   {
     "team": "Melbourne",
     "player": "Kentfield, Luker",
-    "position": "Key Defender",
+    "position": "Key Forward",
     "playerKey": "kentfield, luker|melbourne"
   },
   {
     "team": "Melbourne",
     "player": "Moniz-Wakefield, Andy",
-    "position": "Defender",
+    "position": "Forward",
     "playerKey": "moniz-wakefield, andy|melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Dovaston, Lachy",
+    "position": "Forward",
+    "playerKey": "dovaston, lachy|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "O'Sullivan, Finn",
+    "position": "Midfielder",
+    "playerKey": "o'sullivan, finn|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Sheezel, Harry",
+    "position": "Midfielder",
+    "playerKey": "sheezel, harry|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Corr, Aidan",
+    "position": "Key Defender",
+    "playerKey": "corr, aidan|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Daniel, Caleb",
+    "position": "Defender",
+    "playerKey": "daniel, caleb|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Wardlaw, George",
+    "position": "Midfielder",
+    "playerKey": "wardlaw, george|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Duursma, Zane",
+    "position": "Forward",
+    "playerKey": "duursma, zane|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Scott, Bailey",
+    "position": "Midfielder",
+    "playerKey": "scott, bailey|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Davies-Uniacke, Luke",
+    "position": "Midfielder",
+    "playerKey": "davies-uniacke, luke|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "McKercher, Colby",
+    "position": "Forward",
+    "playerKey": "mckercher, colby|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "McDonald, Luke",
+    "position": "Defender",
+    "playerKey": "mcdonald, luke|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Simpkin, Jy",
+    "position": "Midfielder",
+    "playerKey": "simpkin, jy|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Spargo, Charlie",
+    "position": "Forward",
+    "playerKey": "spargo, charlie|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Urquhart, Luke",
+    "position": "Midfielder",
+    "playerKey": "urquhart, luke|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Stephens, Dylan",
+    "position": "Midfielder",
+    "playerKey": "stephens, dylan|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Fisher, Zac",
+    "position": "Midfielder",
+    "playerKey": "fisher, zac|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Hardeman, Riley",
+    "position": "Defender",
+    "playerKey": "hardeman, riley|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Dawson, Wil",
+    "position": "Ruck",
+    "playerKey": "dawson, wil|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Logue, Griffin",
+    "position": "Key Defender",
+    "playerKey": "logue, griffin|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Larkey, Nick",
+    "position": "Key Forward",
+    "playerKey": "larkey, nick|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Coleman-Jones, Callum",
+    "position": "Ruck",
+    "playerKey": "coleman-jones, callum|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Goad, Taylor",
+    "position": "Ruck",
+    "playerKey": "goad, taylor|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Thredgold, Blake",
+    "position": "Key Defender",
+    "playerKey": "thredgold, blake|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Powell, Tom",
+    "position": "Forward",
+    "playerKey": "powell, tom|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Curtis, Paul",
+    "position": "Forward",
+    "playerKey": "curtis, paul|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Parker, Luke",
+    "position": "Defender",
+    "playerKey": "parker, luke|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Darling, Jack",
+    "position": "Key Forward",
+    "playerKey": "darling, jack|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Mikunda, Hugo",
+    "position": "Defender",
+    "playerKey": "mikunda, hugo|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Comben, Charlie",
+    "position": "Key Defender",
+    "playerKey": "comben, charlie|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Goater, Josh",
+    "position": "Defender",
+    "playerKey": "goater, josh|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Pink, Toby",
+    "position": "Key Defender",
+    "playerKey": "pink, toby|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "George, Brayden",
+    "position": "Forward",
+    "playerKey": "george, brayden|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Archer, Jackson",
+    "position": "Defender",
+    "playerKey": "archer, jackson|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Whitlock, Matt",
+    "position": "Key Forward",
+    "playerKey": "whitlock, matt|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Stevens, River",
+    "position": "Forward",
+    "playerKey": "stevens, river|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Harvey, Cooper",
+    "position": "Defender",
+    "playerKey": "harvey, cooper|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Xerri, Tristan",
+    "position": "Ruck",
+    "playerKey": "xerri, tristan|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Blamires, Tom",
+    "position": "Defender",
+    "playerKey": "blamires, tom|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Brewer, Lachy",
+    "position": "Key Defender",
+    "playerKey": "brewer, lachy|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Konstanty, Jacob",
+    "position": "Forward",
+    "playerKey": "konstanty, jacob|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Zurhaar, Cameron",
+    "position": "Forward",
+    "playerKey": "zurhaar, cameron|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Banch, Zac",
+    "position": "Forward",
+    "playerKey": "banch, zac|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Hansen Jr, Robert",
+    "position": "Defender",
+    "playerKey": "hansen jr, robert|north melbourne"
+  },
+  {
+    "team": "North Melbourne",
+    "player": "Trembath, Cooper",
+    "position": "Key Forward",
+    "playerKey": "trembath, cooper|north melbourne"
   },
   {
     "team": "Port Adelaide",
@@ -2528,7 +3056,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Port Adelaide",
     "player": "Anastasopoulos, Tom",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "anastasopoulos, tom|port adelaide"
   },
   {
@@ -2594,13 +3122,13 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Port Adelaide",
     "player": "Barrett, Benny",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "barrett, benny|port adelaide"
   },
   {
     "team": "Port Adelaide",
     "player": "O'Brien, Balyn",
-    "position": "Defender",
+    "position": "Key Defender",
     "playerKey": "o'brien, balyn|port adelaide"
   },
   {
@@ -2738,7 +3266,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Sydney",
     "player": "Phillipou, Jevan",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "phillipou, jevan|sydney"
   },
   {
@@ -2876,7 +3404,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Sydney",
     "player": "Chamberlain, Noah",
-    "position": "Key Forward",
+    "position": "Midfielder",
     "playerKey": "chamberlain, noah|sydney"
   },
   {
@@ -2888,7 +3416,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Sydney",
     "player": "Lloyd, Jake",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "lloyd, jake|sydney"
   },
   {
@@ -2912,7 +3440,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "West Coast",
     "player": "Baker, Liam",
-    "position": "Forward",
+    "position": "Defender",
     "playerKey": "baker, liam|west coast"
   },
   {
@@ -3038,7 +3566,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "West Coast",
     "player": "Johnston, Harvey",
-    "position": "Defender",
+    "position": "Forward",
     "playerKey": "johnston, harvey|west coast"
   },
   {
@@ -3152,13 +3680,13 @@ window.PLAYER_POSITIONS = [
   {
     "team": "West Coast",
     "player": "Dewar, Tyrell",
-    "position": "Midfielder",
+    "position": "Defender",
     "playerKey": "dewar, tyrell|west coast"
   },
   {
     "team": "West Coast",
     "player": "Hutchinson, Jack",
-    "position": "Midfielder",
+    "position": "Forward",
     "playerKey": "hutchinson, jack|west coast"
   },
   {
@@ -3278,7 +3806,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Western Bulldogs",
     "player": "Darcy, Will",
-    "position": "Key Defender",
+    "position": "Key Forward",
     "playerKey": "darcy, will|western bulldogs"
   },
   {
@@ -3290,7 +3818,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Western Bulldogs",
     "player": "Coffield, Nick",
-    "position": "Defender",
+    "position": "Key Defender",
     "playerKey": "coffield, nick|western bulldogs"
   },
   {
@@ -3316,12 +3844,6 @@ window.PLAYER_POSITIONS = [
     "player": "Liberatore, Tom",
     "position": "Midfielder",
     "playerKey": "liberatore, tom|western bulldogs"
-  },
-  {
-    "team": "Western Bulldogs",
-    "player": "Harmes, James",
-    "position": "Midfielder",
-    "playerKey": "harmes, james|western bulldogs"
   },
   {
     "team": "Western Bulldogs",
@@ -3368,7 +3890,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Western Bulldogs",
     "player": "McNeil, Lachlan",
-    "position": "Forward",
+    "position": "Midfielder",
     "playerKey": "mcneil, lachlan|western bulldogs"
   },
   {
@@ -3428,7 +3950,7 @@ window.PLAYER_POSITIONS = [
   {
     "team": "Western Bulldogs",
     "player": "Walker, Zac",
-    "position": "Key Defender",
+    "position": "Forward",
     "playerKey": "walker, zac|western bulldogs"
   },
   {

@@ -1,4 +1,4 @@
-# Deploying SportzLabs to the Apple App Store
+# Deploying AFL Performance to the Apple App Store
 
 This project is configured as a Capacitor iOS app. Capacitor wraps the existing web app in a native iPhone app that can be opened in Xcode and submitted to App Store Connect.
 
@@ -28,13 +28,13 @@ This project is configured as a Capacitor iOS app. Capacitor wraps the existing 
 In Xcode, select the `App` project and set:
 
 - Bundle Identifier: `com.sportzlabs.performancelab`
-- Display Name: `SportzLabs`
+- Display Name: `AFL Performance`
 - Team: your Apple Developer account
 - Version: your public version, for example `1.0.0`
 - Build: increment this every upload, for example `1`
 - Deployment target: keep Xcode's default unless App Store Connect asks you to change it
 
-Use the files in `icons/` as the basis for the app icon. Xcode requires PNG icons in its AppIcon asset set, so export the SVG icon to the required PNG sizes through Xcode, Preview, Figma, or another image tool.
+Use `app-icons/AppIcon.appiconset` for the app icon. Copy that folder into `ios/App/App/Assets.xcassets/` and replace the existing `AppIcon.appiconset`.
 
 ## Supabase redirect URLs
 
@@ -73,4 +73,4 @@ npm run ios:open
 
 ## Review note
 
-Apple can reject apps that are only a thin website wrapper. SportzLabs has login, analytics, player comparison, saved app navigation, and generated sports data, which helps. Before submission, add polished screenshots, a support URL, privacy policy URL, and a short reviewer note explaining that the app provides AFL performance analytics, player comparison, PAV charts, and curated news.
+Apple can reject apps that are only a thin website wrapper. AFL Performance has login, analytics, player comparison, saved app navigation, and generated sports data, which helps. Before submission, add polished screenshots, a support URL, privacy policy URL, and a short reviewer note explaining that the app provides AFL performance analytics, player comparison, PAV charts, and curated news.

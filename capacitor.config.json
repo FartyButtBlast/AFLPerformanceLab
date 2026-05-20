@@ -1,11 +1,11 @@
 {
   "appId": "com.sportzlabs.performancelab",
-  "appName": "SportzLabs",
+  "appName": "AFL Performance",
   "webDir": "www",
   "bundledWebRuntime": false,
   "ios": {
     "contentInset": "automatic",
-    "scheme": "SportzLabs"
+    "scheme": "AFLPerformance"
   },
   "server": {
     "iosScheme": "https"

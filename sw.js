@@ -1,4 +1,4 @@
-const CACHE_NAME = "sportzlabs-app-v3";
+const CACHE_NAME = "afl-performance-app-v2";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -13,8 +13,10 @@ const APP_ASSETS = [
   "./pwa.js?v=pwa-1",
   "./app.js?v=news-2",
   "./manifest.webmanifest",
-  "./icons/icon.svg",
-  "./icons/maskable.svg",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
+  "./icons/icon-1024.png",
+  "./icons/apple-touch-icon.png",
 ];
 
 self.addEventListener("install", (event) => {
