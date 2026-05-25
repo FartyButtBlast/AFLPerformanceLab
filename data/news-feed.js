@@ -1,5 +1,5 @@
 window.NEWS_FEED = {
-  "fetchedAt": "2026-05-20T10:00:20.687Z",
+  "fetchedAt": "2026-05-20T10:59:25.187Z",
   "sources": [
     "AFL.com.au",
     "ABC Sport",

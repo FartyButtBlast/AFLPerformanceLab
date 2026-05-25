@@ -12,7 +12,9 @@ const files = [
   "auth.js",
   "index.html",
   "manifest.webmanifest",
+  "privacy.html",
   "pwa.js",
+  "support.html",
   "styles.css",
   "sw.js",
 ];

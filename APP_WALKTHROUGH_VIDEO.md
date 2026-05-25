@@ -11,7 +11,7 @@ Suggested recording size: 1920 x 1080.
 Open the app before recording:
 
 ```txt
-https://www.sportzlabs.com/
+https://aflperformance.sportzlabs.com/
 ```
 
 If recording locally:

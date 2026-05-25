@@ -1,4 +1,4 @@
-# Deploying AFL Performance Lab
+# Deploying AFL Performance
 
 This is a static site. GitHub Pages can host it and GitHub Actions can refresh the season data automatically.
 
@@ -12,7 +12,7 @@ This is a static site. GitHub Pages can host it and GitHub Actions can refresh t
 
 GitHub will publish the site at a URL like:
 
-`https://YOUR-USER.github.io/YOUR-REPO/`
+`https://aflperformance.sportzlabs.com/`
 
 ## Automatic updates
 
@@ -43,12 +43,12 @@ The app uses Supabase Auth for registration, login, and password reset.
 3. Copy the **Project URL** and **anon public key**.
 4. Paste them into `auth-config.js`.
 5. In Supabase, open **Authentication > URL Configuration**.
-6. Add your GitHub Pages URL as the **Site URL**.
+6. Add your live app URL as the **Site URL**.
 7. Add the same URL to **Redirect URLs**.
 
 The URL will look like:
 
-`https://YOUR-USER.github.io/YOUR-REPO/`
+`https://aflperformance.sportzlabs.com/`
 
 After updating `auth-config.js`, commit and push the change. GitHub Actions will redeploy the site.
 

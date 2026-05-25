@@ -25,6 +25,46 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  color: #ffffff;
+}
+
+.legal-shell {
+  width: min(900px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 48px;
+}
+
+.legal-back {
+  display: inline-flex;
+  margin-bottom: 18px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.legal-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(17, 31, 61, 0.98), rgba(12, 24, 48, 0.98));
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.legal-panel h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+}
+
+.legal-panel h2 {
+  margin: 28px 0 8px;
+  font-size: 1.15rem;
+}
+
+.legal-panel p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
 body {
   margin: 0;
   background:
@@ -77,6 +117,17 @@ select {
 
 .auth-panel h1 {
   font-size: clamp(2rem, 7vw, 3.4rem);
+}
+
+.auth-brand-block {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-logo {
+  display: block;
+  width: min(240px, 72vw);
+  height: auto;
 }
 
 .auth-tabs {
@@ -134,6 +185,17 @@ select {
   gap: 24px;
   padding: 8px 0 24px;
   border-bottom: 1px solid rgba(174, 185, 193, 0.18);
+}
+
+.app-brand {
+  display: grid;
+  gap: 16px;
+}
+
+.app-logo {
+  display: block;
+  width: min(220px, 48vw);
+  height: auto;
 }
 
 .eyebrow {

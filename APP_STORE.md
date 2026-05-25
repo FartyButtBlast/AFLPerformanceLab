@@ -42,8 +42,8 @@ For email verification and password reset links, Supabase must allow the web app
 
 In Supabase, go to Authentication > URL Configuration and add:
 
-- `https://www.sportzlabs.com/`
-- `https://sportzlabs.com/`
+- `https://aflperformance.sportzlabs.com/`
+- `https://www.aflperformance.sportzlabs.com/`
 - `https://localhost/`
 
 Keep the current hosted site URL as the primary redirect if you want email links to open the web app first. Native deep linking can be added later with Associated Domains if you want links to open directly inside the installed app.
@@ -70,6 +70,11 @@ npm run ios:open
 4. Select App Store Connect.
 5. Upload the build.
 6. In App Store Connect, create the app listing, add screenshots, privacy details, age rating, support URL, and submit for review.
+
+Use these hosted URLs once the latest web build is published:
+
+- Privacy Policy URL: `https://aflperformance.sportzlabs.com/privacy.html`
+- Support URL: `https://aflperformance.sportzlabs.com/support.html`
 
 ## Review note
 

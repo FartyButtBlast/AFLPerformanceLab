@@ -1,5 +1,5 @@
 window.AFL_DATA = {
-  "fetchedAt": "2026-05-20T10:00:18.008Z",
+  "fetchedAt": "2026-05-20T10:59:22.506Z",
   "season": 2026,
   "years": [
     2026
