@@ -20,6 +20,7 @@ const APP_ASSETS = [
   "./icons/icon-1024.png",
   "./icons/apple-touch-icon.png",
   "./icons/sportzlabs-logo.png",
+  "./icons/sportzlabs-logo-black.png",
 ];
 
 self.addEventListener("install", (event) => {

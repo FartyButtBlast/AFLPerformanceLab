@@ -29,7 +29,7 @@ The reset link must use Supabase's `{{ .ConfirmationURL }}` variable. Do not rep
 The logo points to:
 
 ```text
-https://www.sportzlabs.com/assets/sportzlabs-logo-black.png
+https://aflperformance.sportzlabs.com/icons/sportzlabs-logo-black.png
 ```
 
-Make sure the SportzLabs corporate site has been deployed before sending test emails, otherwise the email may not load the logo.
+Make sure the AFL Performance app has been redeployed after adding `icons/sportzlabs-logo-black.png`, otherwise the email may not load the logo.
