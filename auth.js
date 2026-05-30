@@ -67,14 +67,88 @@
     return config.redirectUrl || window.location.origin + window.location.pathname;
   }
 
+  function authParamsFromUrl(url) {
+    const parsed = new URL(url, window.location.href);
+    const hashParams = new URLSearchParams(parsed.hash.replace(/^#/, ""));
+    const searchParams = parsed.searchParams;
+    const params = new URLSearchParams(searchParams);
+    hashParams.forEach((value, key) => params.set(key, value));
+    return params;
+  }
+
   function isPasswordRecoveryUrl() {
-    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
-    const searchParams = new URLSearchParams(window.location.search);
-    return hashParams.get("type") === "recovery" || searchParams.get("type") === "recovery";
+    const params = authParamsFromUrl(window.location.href);
+    return params.get("type") === "recovery" || params.get("error_code") === "otp_expired";
+  }
+
+  function hasAuthUrlState(url = window.location.href) {
+    const params = authParamsFromUrl(url);
+    return Boolean(
+      params.get("type") ||
+        params.get("access_token") ||
+        params.get("refresh_token") ||
+        params.get("code") ||
+        params.get("error"),
+    );
   }
 
   function clearAuthUrlState() {
     window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  async function handleAuthUrl(url) {
+    const params = authParamsFromUrl(url);
+    const isRecovery = params.get("type") === "recovery";
+    const accessToken = params.get("access_token");
+    const refreshToken = params.get("refresh_token");
+    const code = params.get("code");
+
+    if (params.get("error")) {
+      showAuth();
+      setMode("reset");
+      setMessage(params.get("error_description") || "This sign-in link could not be used. Please request a new link.", "error");
+      return;
+    }
+
+    if (accessToken && refreshToken) {
+      const { error } = await supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+      if (error) {
+        showAuth();
+        setMode("reset");
+        setMessage(error.message, "error");
+        return;
+      }
+    } else if (code) {
+      const { error } = await supabase.auth.exchangeCodeForSession(code);
+      if (error) {
+        showAuth();
+        setMode("reset");
+        setMessage(error.message, "error");
+        return;
+      }
+    }
+
+    if (isRecovery || accessToken || code) {
+      showPasswordResetForm();
+      clearAuthUrlState();
+    }
+  }
+
+  async function setupNativeUrlHandling() {
+    const appPlugin = window.Capacitor?.Plugins?.App;
+    if (!appPlugin?.addListener) return;
+
+    appPlugin.addListener("appUrlOpen", async (event) => {
+      if (event?.url) await handleAuthUrl(event.url);
+    });
+
+    if (appPlugin.getLaunchUrl) {
+      const launch = await appPlugin.getLaunchUrl();
+      if (launch?.url) await handleAuthUrl(launch.url);
+    }
   }
 
   tabs.login.addEventListener("click", () => setMode("login"));
@@ -115,6 +189,8 @@
 
   try {
     supabase = await loadSupabase();
+    await setupNativeUrlHandling();
+    if (hasAuthUrlState()) await handleAuthUrl(window.location.href);
     const { data } = await supabase.auth.getSession();
     if (passwordRecoveryExpected) showPasswordResetForm();
     else if (data.session?.user) showApp(data.session.user);

@@ -1,5 +1,5 @@
 {
-  "appId": "com.sportzlabs.performancelab",
+  "appId": "com.sportzlabs.AFLperformancelab",
   "appName": "AFL Performance",
   "webDir": "www",
   "bundledWebRuntime": false,

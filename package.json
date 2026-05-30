@@ -16,6 +16,7 @@
     "start": "python3 -m http.server 4173 --bind 127.0.0.1"
   },
   "dependencies": {
+    "@capacitor/app": "^7.1.2",
     "@capacitor/core": "^7.0.0",
     "@capacitor/ios": "^7.0.0"
   },

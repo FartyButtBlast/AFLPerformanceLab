@@ -993,7 +993,8 @@ function render() {
   document.querySelector("#playerPavCaption").textContent = `${selectedPlayer || "Player"} PAV by round`;
   svgLineChart(document.querySelector("#playerPavChart"), playerPavPoints.length ? playerPavPoints : [{ round: 1, value: 0 }]);
   document.querySelector("#rollupCaption").textContent = `${selectedTeam} ${data.statLabels[selectedStat]} by round, ${season}.`;
-  document.querySelector("#seasonBadge").textContent = `${season} season only, fetched ${new Date(data.fetchedAt).toLocaleDateString()}`;
+  const dataSource = window.APP_DATA_SOURCE?.mode === "live" ? "live" : "bundled";
+  document.querySelector("#seasonBadge").textContent = `${season} season only, ${dataSource} data fetched ${new Date(data.fetchedAt).toLocaleDateString()}`;
   renderQuestionAnswer();
 }
 

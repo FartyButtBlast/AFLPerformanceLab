@@ -10,6 +10,7 @@ const files = [
   "app.js",
   "auth-config.js",
   "auth.js",
+  "data-loader.js",
   "index.html",
   "manifest.webmanifest",
   "privacy.html",
