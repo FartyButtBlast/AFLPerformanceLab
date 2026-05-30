@@ -27,7 +27,7 @@ This project is configured as a Capacitor iOS app. Capacitor wraps the existing 
 
 In Xcode, select the `App` project and set:
 
-- Bundle Identifier: `com.sportzlabs.performancelab`
+- Bundle Identifier: `com.sportzlabs.aflperformance`
 - Display Name: `AFL Performance`
 - Team: your Apple Developer account
 - Version: your public version, for example `1.0.0`
@@ -35,18 +35,6 @@ In Xcode, select the `App` project and set:
 - Deployment target: keep Xcode's default unless App Store Connect asks you to change it
 
 Use `app-icons/AppIcon.appiconset` for the app icon. Copy that folder into `ios/App/App/Assets.xcassets/` and replace the existing `AppIcon.appiconset`.
-
-## Supabase redirect URLs
-
-For email verification and password reset links, Supabase must allow the web app URL and the native app URL.
-
-In Supabase, go to Authentication > URL Configuration and add:
-
-- `https://aflperformance.sportzlabs.com/`
-- `https://www.aflperformance.sportzlabs.com/`
-- `https://localhost/`
-
-Keep the current hosted site URL as the primary redirect if you want email links to open the web app first. Native deep linking can be added later with Associated Domains if you want links to open directly inside the installed app.
 
 ## Rebuild after changes
 
@@ -78,4 +66,4 @@ Use these hosted URLs once the latest web build is published:
 
 ## Review note
 
-Apple can reject apps that are only a thin website wrapper. AFL Performance has login, analytics, player comparison, saved app navigation, and generated sports data, which helps. Before submission, add polished screenshots, a support URL, privacy policy URL, and a short reviewer note explaining that the app provides AFL performance analytics, player comparison, PAV charts, and curated news.
+Apple can reject apps that are only a thin website wrapper. AFL Performance has analytics dashboards, player comparison, PAV charts, curated news, native app icons, and generated sports data, which helps. Before submission, add polished screenshots, a support URL, privacy policy URL, and a short reviewer note explaining that the app provides AFL performance analytics, player comparison, PAV charts, and curated news without requiring users to create an account.

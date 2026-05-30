@@ -23,7 +23,7 @@ file:///Users/derekenderby/Documents/Codex/2026-05-06/i-want-you-to-take-a/index
 ## Scene 1: Opening
 
 On screen:
-- Show the login page or the main dashboard.
+- Show the main dashboard.
 
 Voiceover:
 
@@ -179,7 +179,7 @@ SportzLabs Performance Lab helps AFL fans analyse team and player performance, t
 
 ## Quick Recording Checklist
 
-- Log in before recording if you do not want to show the login flow.
+- Open the app before recording and confirm the dashboard is showing current data.
 - Use full-screen browser mode.
 - Set browser zoom to 100%.
 - Use a team with strong visible examples before recording.

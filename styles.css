@@ -93,91 +93,6 @@ select {
   padding: 28px 0 40px;
 }
 
-.auth-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: rgba(7, 16, 31, 0.92);
-  backdrop-filter: blur(12px);
-}
-
-.auth-panel {
-  width: min(480px, 100%);
-  display: grid;
-  gap: 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(17, 31, 61, 0.98), rgba(12, 24, 48, 0.98));
-  box-shadow: var(--shadow);
-  padding: 24px;
-}
-
-.auth-panel h1 {
-  font-size: clamp(2rem, 7vw, 3.4rem);
-}
-
-.auth-brand-block {
-  display: grid;
-  gap: 12px;
-}
-
-.auth-logo {
-  display: block;
-  width: min(240px, 72vw);
-  height: auto;
-}
-
-.auth-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.auth-tab,
-.secondary-button {
-  min-height: 36px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--ink);
-  padding: 0 10px;
-}
-
-.auth-tab.active {
-  border-color: var(--accent);
-  background: rgba(229, 27, 35, 0.18);
-  color: #fff;
-}
-
-.auth-form {
-  display: grid;
-  gap: 12px;
-}
-
-.auth-message,
-.auth-notice {
-  color: var(--muted);
-  line-height: 1.45;
-}
-
-.auth-message[data-tone="error"],
-.auth-notice {
-  color: var(--red);
-}
-
-.auth-message[data-tone="success"] {
-  color: var(--accent-dark);
-}
-
-.auth-notice {
-  border: 1px solid #f1c6cc;
-  border-radius: 8px;
-  background: rgba(229, 27, 35, 0.08);
-  padding: 12px;
-}
-
 .topbar {
   display: flex;
   align-items: end;
@@ -346,9 +261,12 @@ button:disabled {
 }
 
 .secondary-button {
+  min-height: 36px;
+  border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: none;
   color: var(--ink);
+  padding: 0 10px;
 }
 
 option {
@@ -926,13 +844,6 @@ tbody tr:hover,
     padding: 7px 9px;
   }
 
-  #userBadge {
-    max-width: min(100%, 19rem);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
   #seasonBadge {
     border-radius: 8px;
     white-space: normal;
@@ -1029,11 +940,5 @@ tbody tr:hover,
 
   .news-card-body {
     padding: 12px;
-  }
-}
-
-@media (max-width: 380px) {
-  #userBadge {
-    max-width: 100%;
   }
 }

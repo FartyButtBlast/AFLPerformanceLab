@@ -1,4 +1,4 @@
-const CACHE_NAME = "afl-performance-app-v6";
+const CACHE_NAME = "afl-performance-app-v7";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -7,8 +7,6 @@ const APP_ASSETS = [
   "./styles.css?v=logo-1",
   "./analytics-config.js?v=analytics-1",
   "./analytics.js?v=analytics-1",
-  "./auth-config.js?v=auth-6",
-  "./auth.js?v=auth-7",
   "./data-loader.js?v=live-data-1",
   "./data/afl-data.js?v=season-2026",
   "./data/player-positions.js?v=positions-2",

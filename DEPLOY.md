@@ -34,24 +34,6 @@ node scripts/build-data.mjs
 
 Then open `index.html` or run a local server.
 
-## Login setup
-
-The app uses Supabase Auth for registration, login, and password reset.
-
-1. Create a project at `https://supabase.com`.
-2. In Supabase, open **Project Settings > API**.
-3. Copy the **Project URL** and **anon public key**.
-4. Paste them into `auth-config.js`.
-5. In Supabase, open **Authentication > URL Configuration**.
-6. Add your live app URL as the **Site URL**.
-7. Add the same URL to **Redirect URLs**.
-
-The URL will look like:
-
-`https://aflperformance.sportzlabs.com/`
-
-After updating `auth-config.js`, commit and push the change. GitHub Actions will redeploy the site.
-
 ## Analytics setup
 
 The app has optional Google Analytics support.
@@ -67,4 +49,4 @@ window.ANALYTICS_CONFIG = {
 };
 ```
 
-The app tracks page views and simple product events such as login, registration request, password reset request, selected team, selected stat, selected player, and submitted questions. It does not send passwords, email addresses, or the full question text.
+The app tracks page views and simple product events such as selected team, selected stat, selected player, and submitted questions. It does not send passwords, email addresses, or the full question text.
